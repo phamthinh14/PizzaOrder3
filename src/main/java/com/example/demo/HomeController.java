@@ -88,7 +88,7 @@ public class HomeController {
     @RequestMapping("/update/{id}")
     public String updateMessage(@PathVariable("id") long id, Model model) {
         model.addAttribute("pizzaorder", orderRepository.findById(id).get());
-        return "orderform";
+        return "updateorderform";
     }
 
     @RequestMapping("/delete/{id}")

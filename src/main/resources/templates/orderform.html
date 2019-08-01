@@ -81,21 +81,18 @@
     <br>
     Small Size <input id="1" onclick="selectOneSizeOnly(this.id)"
                       type="checkbox" name="smallSize"
-                      th:checked="${pizzaorder.smallSize == true}">
-    Medium Size <input id="2" onclick="selectOneSizeOnly(this.id)" type="checkbox" name="mediumSize"
-                       th:checked="${pizzaorder.mediumSize == true}">
-    Large Size <input id="3" onclick="selectOneSizeOnly(this.id)" type="checkbox" name="largeSize"
-                      th:checked="${pizzaorder.largeSize == true}">
+                      checked>
+    Medium Size <input id="2" onclick="selectOneSizeOnly(this.id)" type="checkbox" name="mediumSize">
+    Large Size <input id="3" onclick="selectOneSizeOnly(this.id)" type="checkbox" name="largeSize">
     <!--End Size Section-->
     <!--Dough Section-->
     <br>
     Dough:
     <hr>
     <br>
-    Normal Dough: <input id="4" onclick="selectOneDoughOnly(this.id)" type="checkbox" name="normalDough"
-                         th:checked="${pizzaorder.normalDough == true}">
+    Normal Dough: <input id="4" onclick="selectOneDoughOnly(this.id)" type="checkbox" name="normalDough" checked>
     Gluten Free Dough: <input id="5" onclick="selectOneDoughOnly(this.id)" type="checkbox" name="glutenFreeDough"
-                              th:checked="${pizzaorder.glutenFreeDough == true}">
+>
     <br>
     <br>
     <!--End Dough Section-->
@@ -104,11 +101,9 @@
     <hr>
     <br>
     Red Sauce: <input id="6" onclick="selectOneSauceOnly(this.id)" type="checkbox" name="redSauce"
-                      th:checked="${pizzaorder.redSauce == true}">
-    White Sauce: <input id="7" onclick="selectOneSauceOnly(this.id)" type="checkbox" name="whiteSauce"
-                        th:checked="${pizzaorder.whiteSauce == true}">
-    No Sauce: <input id="8" onclick="selectOneSauceOnly(this.id)" type="checkbox" name="noSauce"
-                     th:checked="${pizzaorder.noSauce == true}">
+                      checked>
+    White Sauce: <input id="7" onclick="selectOneSauceOnly(this.id)" type="checkbox" name="whiteSauce">
+    No Sauce: <input id="8" onclick="selectOneSauceOnly(this.id)" type="checkbox" name="noSauce">
     <br>
     <!--End Sauce Section-->
     <!--Cheese Section-->
@@ -116,10 +111,8 @@
     Cheese:
     <hr>
     <br>
-    Cheese : <input id="9" onclick="cheeseOrNoCheese(this.id)" type="checkbox" name="cheese"
-                    th:checked="${pizzaorder.cheese == true}">
-    No Cheese : <input id="10" onclick="cheeseOrNoCheese(this.id)" type="checkbox" name="noCheese"
-                       th:checked="${pizzaorder.noCheese == true}">
+    Cheese : <input id="9" onclick="cheeseOrNoCheese(this.id)" type="checkbox" name="cheese" checked>
+    No Cheese : <input id="10" onclick="cheeseOrNoCheese(this.id)" type="checkbox" name="noCheese">
     <br>
     <!--End Cheese Section-->
     <!--Vegetable-->
@@ -127,9 +120,9 @@
     Vegetable:
     <hr>
     <br>
-    Mushroom : <input id="11" type="checkbox" name="mushroom" th:checked="${pizzaorder.mushroom == true}">
-    Onion : <input id="12" type="checkbox" name="onions" th:checked="${pizzaorder.onions == true}">
-    Green Pepper : <input id="13" type="checkbox" name="greenPepper" th:checked="${pizzaorder.greenPepper == true}">
+    Mushroom : <input id="11" type="checkbox" name="mushroom" checked>
+    Onion : <input id="12" type="checkbox" name="onions">
+    Green Pepper : <input id="13" type="checkbox" name="greenPepper">
     <br>
     <!--End Vegetable-->
     <!--Meat Section-->
@@ -137,9 +130,9 @@
     Meat:
     <hr>
     <br>
-    Bacon : <input id="14" type="checkbox" name="bacon" th:checked="${pizzaorder.bacon == true}">
-    Pepperoni : <input id="15" type="checkbox" name="pepperoni" th:checked="${pizzaorder.pepperoni == true}">
-    Sausage : <input id="16" type="checkbox" name="sausage" th:checked="${pizzaorder.sausage == true}">
+    Bacon : <input id="14" type="checkbox" name="bacon">
+    Pepperoni : <input id="15" type="checkbox" name="pepperoni" checked>
+    Sausage : <input id="16" type="checkbox" name="sausage">
     <!--Meat Section-->
 
 
