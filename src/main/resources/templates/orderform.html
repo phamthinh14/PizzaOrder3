@@ -16,10 +16,22 @@
         <!--
         function checkSelectAtLeastOne(theForm) {
             if (
+                theForm.smallSize.checked == false &&
+                theForm.mediumSize.checked == false &&
+                theForm.largeSize.checked == false &&
                 theForm.normalDough.checked == false &&
                 theForm.glutenFreeDough.checked == false &&
                 theForm.redSauce.checked == false &&
-                theForm.whiteSauce.checked == false
+                theForm.whiteSauce.checked == false &&
+                theForm.noSauce.checked == false &&
+                theForm.cheese.checked == false &&
+                theForm.noCheese.checked == false &&
+                theForm.mushroom.checked == false &&
+                theForm.onions.checked == false &&
+                theForm.greenPepper.checked == false &&
+                theForm.bacon.checked == false &&
+                theForm.pepperoni.checked == false &&
+                theForm.sausage.checked == false
             ) {
                 alert('You did not select anything! Make Sure you pick one in each category');
                 return false;
@@ -67,12 +79,13 @@
     Choose A Size:
     <hr>
     <br>
-    Small Size <input id="1" onclick="selectOneSizeOnly(this.id)" type="checkbox" name="smallSize"
-                      th:checked="${pizzaorder.smallSize == true}" checked>
+    Small Size <input id="1" onclick="selectOneSizeOnly(this.id)"
+                      type="checkbox" name="smallSize"
+                      th:checked="${pizzaorder.smallSize == true}">
     Medium Size <input id="2" onclick="selectOneSizeOnly(this.id)" type="checkbox" name="mediumSize"
-                       th:checked="${pizzaorder.mediumSize == true}" checked>
+                       th:checked="${pizzaorder.mediumSize == true}">
     Large Size <input id="3" onclick="selectOneSizeOnly(this.id)" type="checkbox" name="largeSize"
-                      th:checked="${pizzaorder.largeSize == true}" checked>
+                      th:checked="${pizzaorder.largeSize == true}">
     <!--End Size Section-->
     <!--Dough Section-->
     <br>
@@ -80,7 +93,7 @@
     <hr>
     <br>
     Normal Dough: <input id="4" onclick="selectOneDoughOnly(this.id)" type="checkbox" name="normalDough"
-                         th:checked="${pizzaorder.normalDough == true}" checked>
+                         th:checked="${pizzaorder.normalDough == true}">
     Gluten Free Dough: <input id="5" onclick="selectOneDoughOnly(this.id)" type="checkbox" name="glutenFreeDough"
                               th:checked="${pizzaorder.glutenFreeDough == true}">
     <br>
