@@ -20,7 +20,22 @@
 <div th:if="${pizzaorder.whiteSauce == true}">
     <p>Red Sauce</p>
 </div>
+<div th:if="${pizzaorder.cheese == true}">
+    <p>Cheese</p>
+</div>
+<div th:if="${pizzaorder.mushroom == true}">
+    <p>Mushroom</p>
+</div>
+<div th:if="${pizzaorder.greenPepper == true}">
+    <p>Green Pepper</p>
+</div>
+<div th:if="${pizzaorder.onions == true}">
+    <p>Onion</p>
+</div>
+
+
 <p th:text="${pizzaorder.price}"></p>
+<span>Your Pizza will arrive at <p th:text="${pizzaorder.time}"></p></span>
 </div>
 
 </body>

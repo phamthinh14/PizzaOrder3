@@ -16,10 +16,10 @@
         <!--
         function checkSelectAtLeastOne(theForm) {
             if (
-                // theForm.normalDough.checked == false &&
-            // theForm.glutenFreeDough.checked == false &&
-            theForm.redSauce.checked == false &&
-            theForm.whiteSauce.checked == false
+                theForm.normalDough.checked == false &&
+                theForm.glutenFreeDough.checked == false &&
+                theForm.redSauce.checked == false &&
+                theForm.whiteSauce.checked == false
             ) {
                 alert('Make Sure you pick one in each category');
                 return false;
@@ -28,10 +28,11 @@
             }
 
         }
+
         //-->
     </script>
     <script>
-        function selectOnlyThis(id) {
+        function selectOneDoughOnly(id) {
             for (var i = 1; i <= 2; i++) {
                 document.getElementById(i).checked = false;
             }
@@ -41,17 +42,18 @@
 
     <!--These are the contents-->
     <input type="hidden" th:field="*{id}">
+    <!--Dough Section-->
     Dough:
     <hr>
     <br>
-    Normal Dough: <input id="1" onclick="selectOnlyThis(this.id)" type="checkbox" name="normalDough"
+    Normal Dough: <input id="1" onclick="selectOneDoughOnly(this.id)" type="checkbox" name="normalDough"
                          th:checked="${pizzaorder.normalDough == true}" checked>
-
-    Gluten Free Dough: <input id="2" onclick="selectOnlyThis(this.id)" type="checkbox" name="glutenFreeDough"
+    Gluten Free Dough: <input id="2" onclick="selectOneDoughOnly(this.id)" type="checkbox" name="glutenFreeDough"
                               th:checked="${pizzaorder.glutenFreeDough == true}">
-
     <br>
     <br>
+    <!--End Dough Section-->
+    <!--Sauce Section-->
     Sauce:
     <hr>
     <br>
@@ -59,9 +61,24 @@
 
     White Sauce: <input id="4" type="checkbox" name="whiteSauce" th:checked="${pizzaorder.whiteSauce == true}">
     <br>
+    <!--End Sauce Section-->
+    <!--Cheese Section-->
+    <br>
+    Cheese : <input id="5" type="checkbox" name="cheese" th:checked="${pizzaorder.cheese == true}">
+    <br>
+    <!--End Cheese Section-->
+    <!--Vegetable-->
+    Vegetable:
+    <hr>
+    <br>
+    Mushroom : <input id="6" type="checkbox" name="mushroom" th:checked="${pizzaorder.mushroom == true}">
+    Onion : <input id="7" type="checkbox" name="onions" th:checked="${pizzaorder.onions == true}">
+    Green Pepper : <input id="8" type="checkbox" name="greenPepper" th:checked="${pizzaorder.greenPepper == true}">
 
+
+    <hr>
+    <br>
     <input type="hidden" th:field="*{time}">
-
     <input type="submit" value="Submit">
     <!--END-->
 </form>

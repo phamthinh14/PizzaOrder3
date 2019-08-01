@@ -44,6 +44,19 @@ public class HomeController {
         if (pizzaOrder.isWhiteSauce()) {
             pizzaOrder.setPrice(pizzaOrder.addUpTotal());
         }
+        if (pizzaOrder.isCheese()){
+            pizzaOrder.setPrice(pizzaOrder.addUpTotal());
+        }
+        if (pizzaOrder.isMushroom()){
+            pizzaOrder.setPrice(pizzaOrder.addUpTotal());
+        }
+        if (pizzaOrder.isOnions()){
+            pizzaOrder.setPrice(pizzaOrder.addUpTotal());
+        }
+        if (pizzaOrder.isGreenPepper()){
+            pizzaOrder.setPrice(pizzaOrder.addUpTotal());
+        }
+
         orderRepository.save(pizzaOrder);
         return "redirect:/";
     }
