@@ -8,6 +8,15 @@
 
 <a href="/">Home</a>
 
+<div th:if="${pizzaorder.smallSize == true}">
+    <p>Size: Small</p>
+</div>
+<div th:if="${pizzaorder.mediumSize == true}">
+    <p>Size: Medium</p>
+</div>
+<div th:if="${pizzaorder.largeSize == true}">
+    <p>Size: Large</p>
+</div>
 <div th:if="${pizzaorder.normalDough == true}">
     <p>Normal Dough</p>
 </div>
@@ -19,6 +28,9 @@
 </div>
 <div th:if="${pizzaorder.whiteSauce == true}">
     <p>Red Sauce</p>
+</div>
+<div th:if="${pizzaorder.noSauce == true}">
+    <p>No Sauce</p>
 </div>
 <div th:if="${pizzaorder.cheese == true}">
     <p>Cheese</p>

@@ -12,6 +12,12 @@ public class PizzaOrder {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    private boolean smallSize;
+
+    private boolean mediumSize;
+
+    private boolean largeSize;
+
     private boolean normalDough;
 
     private boolean glutenFreeDough;
@@ -19,6 +25,8 @@ public class PizzaOrder {
     private boolean redSauce;
 
     private boolean whiteSauce;
+
+    private boolean noSauce;
 
     private double price;
 
@@ -148,6 +156,38 @@ public class PizzaOrder {
 
     public void setNoCheese(boolean noCheese) {
         this.noCheese = noCheese;
+    }
+
+    public boolean isSmallSize() {
+        return smallSize;
+    }
+
+    public void setSmallSize(boolean smallSize) {
+        this.smallSize = smallSize;
+    }
+
+    public boolean isMediumSize() {
+        return mediumSize;
+    }
+
+    public void setMediumSize(boolean mediumSize) {
+        this.mediumSize = mediumSize;
+    }
+
+    public boolean isLargeSize() {
+        return largeSize;
+    }
+
+    public void setLargeSize(boolean largeSize) {
+        this.largeSize = largeSize;
+    }
+
+    public boolean isNoSauce() {
+        return noSauce;
+    }
+
+    public void setNoSauce(boolean noSauce) {
+        this.noSauce = noSauce;
     }
 
     public double getPrice() {

@@ -65,6 +65,15 @@ public class HomeController {
         if (pizzaOrder.isSausage()) {
             pizzaOrder.setPrice(pizzaOrder.addUpTotal());
         }
+        if (pizzaOrder.isSmallSize()) {
+            pizzaOrder.setPrice(pizzaOrder.addUpTotal());
+        }
+        if (pizzaOrder.isMediumSize()) {
+            pizzaOrder.setPrice(pizzaOrder.addUpTotal() + 1);
+        }
+        if (pizzaOrder.isLargeSize()) {
+            pizzaOrder.setPrice(pizzaOrder.addUpTotal() + 2);
+        }
 
         orderRepository.save(pizzaOrder);
         return "redirect:/";
