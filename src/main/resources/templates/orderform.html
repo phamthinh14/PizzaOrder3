@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Form</title>
+</head>
+<body>
+
+<form action="#"
+      th:action="@{/process}"
+      th:object="${pizzaorder}"
+      method="post">
+    <!--    private String normalDough;-->
+    <!--    private String glutenFreeDough;-->
+    <!--    private String redSauce;-->
+
+    <input type="hidden" th:field="*{id}">
+    Dough:
+    <hr>
+    <br>
+    Normal Dough: <input type="checkbox" name="normalDough">
+    <!--    <span th:if="${#fields.hasErrors('normalDough')}"-->
+    <!--          th:errors="*{normalDough}"></span><br>-->
+
+    Gluten Free Dough: <input type="checkbox" name="glutenFreeDough">
+    <!--    <span th:if="${#fields.hasErrors('glutenFreeDough')}"-->
+    <!--          th:errors="*{glutenFreeDough}"></span><br>-->
+
+    <br>
+    <br>
+    Sauce:
+    <hr>
+    <br>
+    Red Sauce: <input type="checkbox" name="redSauce">
+    <!--    <span th:if="${#fields.hasErrors('redSauce')}"-->
+    <!--          th:errors="*{redSauce}"></span><br>-->
+    <br>
+
+
+
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>

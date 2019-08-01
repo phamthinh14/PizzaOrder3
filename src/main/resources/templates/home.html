@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+
+<a href="/add">Add a pizza</a>
+<div th:each="var : ${orders}">
+    <div th:if="${var.normalDough == true}">
+        <p>Normal Dough</p>
+    </div>
+    <div th:if="${var.glutenFreeDough == true}">
+        <p>Gluten Free Dough</p>
+    </div>
+    <div th:if="${var.redSauce == true}">
+        <p>Red Sauce</p>
+    </div>
+    <p th:text="${var.price}"></p>
+    <a th:href="@{/update/{id} (id=${var.id})}">Update</a>
+
+    <a th:href="@{/detail/{id} (id=${var.id})}">Details</a>
+
+    <a th:href="@{/delete/{id} (id=${var.id})}">Delete</a>
+</div>
+
+</body>
+</html>
