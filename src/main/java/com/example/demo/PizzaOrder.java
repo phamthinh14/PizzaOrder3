@@ -18,6 +18,8 @@ public class PizzaOrder {
 
     private boolean redSauce;
 
+    private boolean whiteSauce;
+
     private double price;
 
     private String time;
@@ -60,6 +62,14 @@ public class PizzaOrder {
 
     public void setRedSauce(boolean redSauce) {
         this.redSauce = redSauce;
+    }
+
+    public boolean isWhiteSauce() {
+        return whiteSauce;
+    }
+
+    public void setWhiteSauce(boolean whiteSauce) {
+        this.whiteSauce = whiteSauce;
     }
 
     public double getPrice() {

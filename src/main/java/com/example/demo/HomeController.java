@@ -17,7 +17,7 @@ public class HomeController {
 
     @RequestMapping("/")
     public String homePage(Model model) {
-        model.addAttribute("orders", orderRepository.findAll());
+        model.addAttribute("pizzaorders", orderRepository.findAll());
         return "home";
     }
 
@@ -39,6 +39,9 @@ public class HomeController {
             pizzaOrder.setPrice(pizzaOrder.addUpTotal());
         }
         if (pizzaOrder.isRedSauce()) {
+            pizzaOrder.setPrice(pizzaOrder.addUpTotal());
+        }
+        if (pizzaOrder.isWhiteSauce()) {
             pizzaOrder.setPrice(pizzaOrder.addUpTotal());
         }
         orderRepository.save(pizzaOrder);

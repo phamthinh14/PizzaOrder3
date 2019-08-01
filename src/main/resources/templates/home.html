@@ -7,22 +7,26 @@
 <body>
 
 <a href="/add">Add a pizza</a>
-<div th:each="var : ${orders}">
-    <div th:if="${var.normalDough == true}">
+<div th:each="mypizza : ${pizzaorders}">
+    <div th:if="${mypizza.normalDough == true}">
         <p>Normal Dough</p>
     </div>
-    <div th:if="${var.glutenFreeDough == true}">
+    <div th:if="${mypizza.glutenFreeDough == true}">
         <p>Gluten Free Dough</p>
     </div>
-    <div th:if="${var.redSauce == true}">
+    <div th:if="${mypizza.redSauce == true}">
         <p>Red Sauce</p>
     </div>
-    <p th:text="${var.price}"></p>
-    <a th:href="@{/update/{id} (id=${var.id})}">Update</a>
+    <div th:if="${mypizza.whiteSauce == true}">
+        <p>White Sauce</p>
+    </div>
+    <p th:text="${mypizza.price}"></p>
+    <p th:text="${mypizza.time}"></p>
+    <a th:href="@{/update/{id} (id=${mypizza.id})}">Update</a>
 
-    <a th:href="@{/detail/{id} (id=${var.id})}">Details</a>
+    <a th:href="@{/detail/{id} (id=${mypizza.id})}">Details</a>
 
-    <a th:href="@{/delete/{id} (id=${var.id})}">Delete</a>
+    <a th:href="@{/delete/{id} (id=${mypizza.id})}">Delete</a>
 </div>
 
 </body>

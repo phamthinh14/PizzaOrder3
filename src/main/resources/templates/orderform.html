@@ -9,27 +9,47 @@
 <form action="#"
       th:action="@{/process}"
       th:object="${pizzaorder}"
-      method="post">
+      method="post"
+      onsubmit="return checkSelectAtLeastOne(this);">
     <!--    private String normalDough;-->
     <!--    private String glutenFreeDough;-->
     <!--    private String redSauce;-->
+    <script type="text/javascript" language="JavaScript">
+        <!--
+        function checkSelectAtLeastOne(theForm) {
+            if (
+                theForm.normalDough.checked == false &&
+                theForm.glutenFreeDough.checked == false &&
+                theForm.redSauce.checked == false &&
+                theForm.whiteSauce.checked == false
+            ) {
+                alert('Make Sure you pick one in each category');
+                return false;
+            } else {
+                return true;
+            }
 
+        }
+
+        //-->
+    </script>
     <input type="hidden" th:field="*{id}">
     Dough:
     <hr>
     <br>
-    Normal Dough: <input type="checkbox" name="normalDough" th:checked="${pizzaorder.normalDough == true}">
+    Normal Dough: <input id="1" type="checkbox" name="normalDough" th:checked="${pizzaorder.normalDough == true}">
 
-    Gluten Free Dough: <input type="checkbox" name="glutenFreeDough" th:checked="${pizzaorder.glutenFreeDough == true}">
+    Gluten Free Dough: <input id="2" type="checkbox" name="glutenFreeDough"
+                              th:checked="${pizzaorder.glutenFreeDough == true}">
 
     <br>
     <br>
     Sauce:
     <hr>
     <br>
-    Red Sauce: <input type="checkbox" name="redSauce" th:checked="${pizzaorder.redSauce == true}">
-    <!--    <span th:if="${#fields.hasErrors('redSauce')}"-->
-    <!--          th:errors="*{redSauce}"></span><br>-->
+    Red Sauce: <input id="3" type="checkbox" name="redSauce" th:checked="${pizzaorder.redSauce == true}">
+
+    White Sauce: <input id="4" type="checkbox" name="whiteSauce" th:checked="${pizzaorder.redSauce == true}">
     <br>
 
     <input type="hidden" th:field="*{time}">
