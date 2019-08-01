@@ -22,6 +22,20 @@ public class PizzaOrder {
 
     private double price;
 
+    private boolean cheese;
+
+    private boolean mushroom;
+
+    private boolean onions;
+
+    private boolean greenPepper;
+
+    private boolean bacon;
+
+    private boolean pepperoni;
+
+    private boolean sausage;
+
     private String time;
 
     private Calendar calendar;
@@ -70,6 +84,62 @@ public class PizzaOrder {
 
     public void setWhiteSauce(boolean whiteSauce) {
         this.whiteSauce = whiteSauce;
+    }
+
+    public boolean isCheese() {
+        return cheese;
+    }
+
+    public void setCheese(boolean cheese) {
+        this.cheese = cheese;
+    }
+
+    public boolean isMushroom() {
+        return mushroom;
+    }
+
+    public void setMushroom(boolean mushroom) {
+        this.mushroom = mushroom;
+    }
+
+    public boolean isOnions() {
+        return onions;
+    }
+
+    public void setOnions(boolean onions) {
+        this.onions = onions;
+    }
+
+    public boolean isGreenPepper() {
+        return greenPepper;
+    }
+
+    public void setGreenPepper(boolean greenPepper) {
+        this.greenPepper = greenPepper;
+    }
+
+    public boolean isBacon() {
+        return bacon;
+    }
+
+    public void setBacon(boolean bacon) {
+        this.bacon = bacon;
+    }
+
+    public boolean isPepperoni() {
+        return pepperoni;
+    }
+
+    public void setPepperoni(boolean pepperoni) {
+        this.pepperoni = pepperoni;
+    }
+
+    public boolean isSausage() {
+        return sausage;
+    }
+
+    public void setSausage(boolean sausage) {
+        this.sausage = sausage;
     }
 
     public double getPrice() {
