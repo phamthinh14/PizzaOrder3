@@ -18,25 +18,21 @@
     Dough:
     <hr>
     <br>
-    Normal Dough: <input type="checkbox" name="normalDough">
-    <!--    <span th:if="${#fields.hasErrors('normalDough')}"-->
-    <!--          th:errors="*{normalDough}"></span><br>-->
+    Normal Dough: <input type="checkbox" name="normalDough" th:checked="${pizzaorder.normalDough == true}">
 
-    Gluten Free Dough: <input type="checkbox" name="glutenFreeDough">
-    <!--    <span th:if="${#fields.hasErrors('glutenFreeDough')}"-->
-    <!--          th:errors="*{glutenFreeDough}"></span><br>-->
+    Gluten Free Dough: <input type="checkbox" name="glutenFreeDough" th:checked="${pizzaorder.glutenFreeDough == true}">
 
     <br>
     <br>
     Sauce:
     <hr>
     <br>
-    Red Sauce: <input type="checkbox" name="redSauce">
+    Red Sauce: <input type="checkbox" name="redSauce" th:checked="${pizzaorder.redSauce == true}">
     <!--    <span th:if="${#fields.hasErrors('redSauce')}"-->
     <!--          th:errors="*{redSauce}"></span><br>-->
     <br>
 
-
+    <input type="hidden" th:field="*{time}">
 
     <input type="submit" value="Submit">
 </form>

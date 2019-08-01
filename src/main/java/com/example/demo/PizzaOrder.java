@@ -12,14 +12,10 @@ public class PizzaOrder {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    //    @NotNull
-//    @Size(min = 3)
     private boolean normalDough;
-    //    @NotNull
-//    @Size(min = 3)
+
     private boolean glutenFreeDough;
-    //    @NotNull
-//    @Size(min = 3)
+
     private boolean redSauce;
 
     private double price;
@@ -67,15 +63,7 @@ public class PizzaOrder {
     }
 
     public double getPrice() {
-//        if (isNormalDough()) {
-//            this.price += 1;
-//        }
-//        if (isGlutenFreeDough()) {
-//            this.price += 1;
-//        }
-//        if (isRedSauce()) {
-//            this.price += 1;
-//        }
+
         return price;
     }
 

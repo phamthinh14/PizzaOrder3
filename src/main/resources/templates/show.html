@@ -6,18 +6,18 @@
 </head>
 <body>
 
-<a href="/add">Add a pizza</a>
+<a href="/">Home</a>
 
-    <div th:if="${pizzaorder.normalDough == true}">
-        <p>Normal Dough</p>
-    </div>
-    <div th:if="${pizzaorder.glutenFreeDough == true}">
-        <p>Gluten Free Dough</p>
-    </div>
-    <div th:if="${pizzaorder.redSauce == true}">
-        <p>Red Sauce</p>
-    </div>
-    <p th:text="${pizzaorder.price}"></p>
+<div th:if="${pizzaorder.normalDough == true}">
+    <p>Normal Dough</p>
+</div>
+<div th:if="${pizzaorder.glutenFreeDough == true}">
+    <p>Gluten Free Dough</p>
+</div>
+<div th:if="${pizzaorder.redSauce == true}">
+    <p>Red Sauce</p>
+</div>
+<p th:text="${pizzaorder.price}"></p>
 </div>
 
 </body>
