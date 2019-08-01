@@ -44,16 +44,25 @@ public class HomeController {
         if (pizzaOrder.isWhiteSauce()) {
             pizzaOrder.setPrice(pizzaOrder.addUpTotal());
         }
-        if (pizzaOrder.isCheese()){
+        if (pizzaOrder.isCheese()) {
             pizzaOrder.setPrice(pizzaOrder.addUpTotal());
         }
-        if (pizzaOrder.isMushroom()){
+        if (pizzaOrder.isMushroom()) {
             pizzaOrder.setPrice(pizzaOrder.addUpTotal());
         }
-        if (pizzaOrder.isOnions()){
+        if (pizzaOrder.isOnions()) {
             pizzaOrder.setPrice(pizzaOrder.addUpTotal());
         }
-        if (pizzaOrder.isGreenPepper()){
+        if (pizzaOrder.isGreenPepper()) {
+            pizzaOrder.setPrice(pizzaOrder.addUpTotal());
+        }
+        if (pizzaOrder.isBacon()) {
+            pizzaOrder.setPrice(pizzaOrder.addUpTotal());
+        }
+        if (pizzaOrder.isPepperoni()) {
+            pizzaOrder.setPrice(pizzaOrder.addUpTotal());
+        }
+        if (pizzaOrder.isSausage()) {
             pizzaOrder.setPrice(pizzaOrder.addUpTotal());
         }
 

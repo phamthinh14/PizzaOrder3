@@ -24,6 +24,9 @@
     <div th:if="${mypizza.cheese == true}">
         <p>Cheese</p>
     </div>
+    <div th:if="${mypizza.noCheese == true}">
+        <p>No Cheese</p>
+    </div>
     <div th:if="${mypizza.mushroom == true}">
         <p>Mushroom</p>
     </div>
@@ -32,6 +35,15 @@
     </div>
     <div th:if="${mypizza.onions == true}">
         <p>Onion</p>
+    </div>
+    <div th:if="${mypizza.bacon == true}">
+        <p>Bacon</p>
+    </div>
+    <div th:if="${mypizza.pepperoni == true}">
+        <p>Pepperoni</p>
+    </div>
+    <div th:if="${mypizza.sausage == true}">
+        <p>Sausage</p>
     </div>
 
 

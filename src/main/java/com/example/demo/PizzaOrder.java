@@ -24,6 +24,8 @@ public class PizzaOrder {
 
     private boolean cheese;
 
+    private boolean noCheese;
+
     private boolean mushroom;
 
     private boolean onions;
@@ -42,8 +44,6 @@ public class PizzaOrder {
 
     public PizzaOrder() {
         calendar = Calendar.getInstance();
-
-
     }
 
     public long getId() {
@@ -140,6 +140,14 @@ public class PizzaOrder {
 
     public void setSausage(boolean sausage) {
         this.sausage = sausage;
+    }
+
+    public boolean isNoCheese() {
+        return noCheese;
+    }
+
+    public void setNoCheese(boolean noCheese) {
+        this.noCheese = noCheese;
     }
 
     public double getPrice() {
