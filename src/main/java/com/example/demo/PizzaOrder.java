@@ -1,9 +1,6 @@
 package com.example.demo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Calendar;
 
 @Entity
@@ -41,6 +38,11 @@ public class PizzaOrder {
     private String time;
 
     private Calendar calendar;
+
+    //merger security here
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public PizzaOrder() {
         calendar = Calendar.getInstance();
@@ -178,10 +180,15 @@ public class PizzaOrder {
         this.calendar = calendar;
     }
 
+    //merger security here
+    public User getUser() { return user; }
+
+    public void setUser(User user) { this.user = user; }
+
+
+
     public double addUpTotal() {
 
         return getPrice() + 1;
     }
-
-
 }
