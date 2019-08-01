@@ -16,6 +16,11 @@ public class HomeController {
     OrderRepository orderRepository;
 
     @RequestMapping("/")
+    public String land(){
+        return "landing";
+    }
+
+    @RequestMapping("/order")
     public String homePage(Model model) {
         model.addAttribute("pizzaorders", orderRepository.findAll());
         return "home";
@@ -76,7 +81,7 @@ public class HomeController {
         }
 
         orderRepository.save(pizzaOrder);
-        return "redirect:/";
+        return "redirect:/order";
     }
 
     @RequestMapping("/detail/{id}")
@@ -94,6 +99,6 @@ public class HomeController {
     @RequestMapping("/delete/{id}")
     public String delMessage(@PathVariable("id") long id) {
         orderRepository.deleteById(id);
-        return "redirect:/";
+        return "redirect:/order";
     }
 }

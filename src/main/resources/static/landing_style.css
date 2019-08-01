@@ -1,0 +1,46 @@
+.container{
+    margin:0
+}
+body{
+    min-height:100vh;
+    /*url(https://res.cloudinary.com/japes930/image/upload/bo_5px_solid_rgb:ffffff,c_scale,h_900,w_1200/v1564583617/blackboard-food-background_23-2148057223_axl69k.jpg*/
+    background:#2e2e2e url("background_fin.png"
+    ) no-repeat center fixed;
+    background-size:cover
+}
+
+#landing-div{
+    position:absolute;
+    left:41%;
+    bottom:17%;
+    font-family: Cabin Sketch;
+}
+
+#landing-div > button{
+    font-size:2.5rem;
+    background: transparent;
+    width:15rem;
+}
+
+#landing-div>p{
+    color:whitesmoke;
+    text-align: center;
+    padding-left: 4rem;
+    padding-top: 1rem;
+}
+#menu-btn{
+    color: #28a745;
+    border: 3px #28a745 solid;
+}
+#menu-btn:hover{
+    background-color:#28a745!important;
+    color:white;
+}
+#login-btn{
+    color: #dc3545;
+    border: 3px #dc3545 solid;
+}
+#login-btn:hover{
+    background-color:#dc3545;
+    color:white;
+}
