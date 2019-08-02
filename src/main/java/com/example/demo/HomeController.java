@@ -13,6 +13,9 @@ import javax.validation.Valid;
 @Controller
 public class HomeController {
     @Autowired
+    private UserService userService;
+
+    @Autowired
     OrderRepository orderRepository;
 
     @RequestMapping("/")
