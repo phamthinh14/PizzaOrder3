@@ -16,10 +16,13 @@ public class HomeController {
     private UserService userService;
 
     @Autowired
-    OrderRepository orderRepository;
+    private OrderRepository orderRepository;
+
+    @Autowired
+    UserRepository userRepository;
 
     @RequestMapping("/")
-    public String land(){
+    public String land() {
         return "landing";
     }
 
@@ -27,6 +30,12 @@ public class HomeController {
     public String homePage(Model model) {
         model.addAttribute("pizzaorders", orderRepository.findAllByUser(userService.getUser()));
         return "home";
+    }
+
+    @RequestMapping("/adminview")
+    public String sumOfPrice(Model model) {
+        model.addAttribute("customersInfo", userRepository.findAll());
+        return "displayCustomersInfo";
     }
 
     @GetMapping("/add")

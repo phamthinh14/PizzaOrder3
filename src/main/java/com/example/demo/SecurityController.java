@@ -12,7 +12,7 @@ import java.security.Principal;
 @Controller
 public class SecurityController {
     @Autowired
-    OrderRepository  orderRepository;
+    OrderRepository orderRepository;
 
     @Autowired
     private UserService userService;

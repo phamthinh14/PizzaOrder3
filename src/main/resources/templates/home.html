@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"  xmlns: sec="www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns: sec="www.thymeleaf.org/extras/spring-security">
 <head>
-    <meta charset="UTF-8">
+
     <title>Home</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Roboto|Cabin+Sketch&display=swap" rel="stylesheet">
+    <th:block th:replace="base :: header"></th:block>
 </head>
 <body>
 <div th:replace="base :: nav"></div>
-<a href="/add">Add a pizza</a>
+
 <h2>Order Summary</h2>
 <div th:each="mypizza : ${pizzaorders}">
     <div th:if="${mypizza.smallSize == true}">
