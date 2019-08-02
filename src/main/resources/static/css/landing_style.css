@@ -3,9 +3,7 @@
 }
 body{
     min-height:100vh;
-    /*url(https://res.cloudinary.com/japes930/image/upload/bo_5px_solid_rgb:ffffff,c_scale,h_900,w_1200/v1564583617/blackboard-food-background_23-2148057223_axl69k.jpg*/
-    background:#2e2e2e url("background_fin.png"
-    ) no-repeat center fixed;
+    background:#2e2e2e url("/img/background_fin.png") no-repeat center fixed;
     background-size:cover
 }
 
