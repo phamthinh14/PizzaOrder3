@@ -41,7 +41,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .antMatchers("/admin").access("hasAuthority('ADMIN')")
                 */
                 //the following two line to replace above commented two lines
-                .antMatchers("/", "/h2-console/**").permitAll()
+                .antMatchers("/", "/add", "/process","/h2-console/**").permitAll()
                 .antMatchers("/register", "/logoutconfirm", "/detail/**").permitAll()
                 .anyRequest().authenticated()
                 .and()

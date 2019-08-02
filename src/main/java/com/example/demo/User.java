@@ -39,8 +39,8 @@ public class User {
     private Collection<Role> roles;
 
     //add on for one user has many orders
-    //@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     //private Set<Message> messages;
     private Set<PizzaOrder> pizzaOrders;
 

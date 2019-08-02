@@ -77,7 +77,7 @@ public class HomeController {
         if (pizzaOrder.isLargeSize()) {
             pizzaOrder.setPrice(pizzaOrder.addUpTotal() + 2);
         }
-
+        pizzaOrder.setUser(userService.getUser());
         orderRepository.save(pizzaOrder);
         return "redirect:/";
     }
