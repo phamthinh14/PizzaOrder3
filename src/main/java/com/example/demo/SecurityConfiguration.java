@@ -14,9 +14,9 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
-    public BCryptPasswordEncoder passwordEncoder(){
+    public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
@@ -41,7 +41,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .antMatchers("/admin").access("hasAuthority('ADMIN')")
                 */
                 //the following two line to replace above commented two lines
-                .antMatchers("/", "/add", "/process","/h2-console/**","/css/**", "/img/**").permitAll()
+                .antMatchers("/", "/order", "/h2-console/**", "/css/**", "/img/**").permitAll()
                 .antMatchers("/register", "/logoutconfirm", "/detail/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
@@ -55,14 +55,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .logoutSuccessUrl("/").permitAll().permitAll() // if logout is successful it'll take us back to logout page.
                 .and()
                 .httpBasic();
-                http
-                    .csrf().disable();
-                http
-                    .headers().frameOptions().disable();
+        http
+                .csrf().disable();
+        http
+                .headers().frameOptions().disable();
     }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception{
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 //        auth.inMemoryAuthentication()
 //
 //                .withUser("user").password(passwordEncoder().encode("password"))
@@ -70,6 +70,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 
         auth.userDetailsService(userDetailsServiceBean())
                 .passwordEncoder(passwordEncoder());
-        }
     }
+}
 
