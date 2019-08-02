@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/add">Add Pizza Order</a><br />
+<table>
+    <tr>
+        <th>NormalDough</th>
+        <th>Gluten Free Dough</th>
+        <th>Red Sauce</th>
+        <th>Time</th>
+        <th>Price</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="pizzaOrder : ${pizzaOrders}">
+        <td th:text="${pizzaOrder.normalDough}"></td>
+        <td th:text="${pizzaOrder.glutenFreeDough}"></td>
+        <td th:text="${pizzaOrder.redSauce}"></td>
+        <td th:text="${pizzaOrder.time}"></td>
+        <td th:text="${pizzaOrder.price}"></td>
+        <td>
+            <span th:if="${user_id == pizzaOrder.user.id}">
+                <a th:href="@{/update/{id}(id=${pizzaOrder.id})}">Update</a>
+            </span>
+            <span sec:authorize="hasAuthority('ADMIN')">
+                <a th:href="@{/delete/{id}(id=${pizzaOrder.id})}">Delete</a>
+            </span>
+            <a th:href="@{/detail/{id}(id=${pizzaOrder.id})}">Details</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -13,6 +13,9 @@ import javax.validation.Valid;
 @Controller
 public class HomeController {
     @Autowired
+    private UserService userService;
+
+    @Autowired
     OrderRepository orderRepository;
 
     @RequestMapping("/")
@@ -79,7 +82,7 @@ public class HomeController {
         if (pizzaOrder.isLargeSize()) {
             pizzaOrder.setPrice(pizzaOrder.addUpTotal() + 2);
         }
-
+        pizzaOrder.setUser(userService.getUser());
         orderRepository.save(pizzaOrder);
         return "redirect:/order";
     }
