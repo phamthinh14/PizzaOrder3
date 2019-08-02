@@ -25,7 +25,7 @@ public class HomeController {
 
     @RequestMapping("/order")
     public String homePage(Model model) {
-        model.addAttribute("pizzaorders", orderRepository.findAll());
+        model.addAttribute("pizzaorders", orderRepository.findAllByUser(userService.getUser()));
         return "home";
     }
 
