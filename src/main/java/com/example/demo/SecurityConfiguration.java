@@ -52,7 +52,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 //working previous     .logoutSuccessUrl("/login").permitAll()
                 //the following one line to replace above //the following two line to replace above two
-                .logoutSuccessUrl("/logoutconfirm").permitAll() // if logout is successful it'll take us back to logout page.
+                .logoutSuccessUrl("/").permitAll().permitAll() // if logout is successful it'll take us back to logout page.
                 .and()
                 .httpBasic();
                 http
@@ -64,11 +64,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
 //        auth.inMemoryAuthentication()
-//                .withUser("dave")
-//                .password(passwordEncoder().encode("begreat"))
-//                .authorities("ADMIN")
 //
-//            .and()
 //                .withUser("user").password(passwordEncoder().encode("password"))
 //                .authorities("USER");
 

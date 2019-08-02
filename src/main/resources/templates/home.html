@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"  xmlns: sec="www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto|Cabin+Sketch&display=swap" rel="stylesheet">
 </head>
 <body>
-
+<div th:replace="base :: nav"></div>
 <a href="/add">Add a pizza</a>
 <h2>Order Summary</h2>
 <div th:each="mypizza : ${pizzaorders}">
