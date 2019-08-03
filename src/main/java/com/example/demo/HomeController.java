@@ -33,9 +33,15 @@ public class HomeController {
     }
 
     @RequestMapping("/adminview")
-    public String sumOfPrice(Model model) {
+    public String adminView(Model model) {
         model.addAttribute("customersInfo", userRepository.findAll());
-        return "displayCustomersInfo";
+        return "admindisplayCustomersInfo";
+    }
+
+    @RequestMapping("/adminedit")
+    public String adminEdit(Model model) {
+        model.addAttribute("pizzaorders", orderRepository.findAll());
+        return "adminEditCustomersOrder";
     }
 
     @GetMapping("/add")
@@ -91,7 +97,14 @@ public class HomeController {
         if (pizzaOrder.isLargeSize()) {
             pizzaOrder.setPrice(pizzaOrder.addUpTotal() + 2);
         }
-        pizzaOrder.setUser(userService.getUser());
+
+//        User currentUser = ;
+        if (pizzaOrder.getUser() != null) {
+            pizzaOrder.setUser(pizzaOrder.getUser());
+        } else {
+            pizzaOrder.setUser(userService.getUser());
+        }
+
         orderRepository.save(pizzaOrder);
         return "redirect:/order";
     }

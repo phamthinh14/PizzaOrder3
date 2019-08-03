@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns: sec="www.thymeleaf.org/extras/spring-security">
+<head>
+
+    <title>Edit Orders</title>
+    <th:block th:replace="base :: header"></th:block>
+</head>
+<body>
+<div th:replace="base :: nav"></div>
+
+<h2>Order Summary</h2>
+<div th:each="mypizza : ${pizzaorders}">
+    <div th:if="${mypizza.smallSize == true}">
+        <p>Size: Small</p>
+    </div>
+    <div th:if="${mypizza.mediumSize == true}">
+        <p>Size: Medium</p>
+    </div>
+    <div th:if="${mypizza.largeSize == true}">
+        <p>Size: Large</p>
+    </div>
+    <div th:if="${mypizza.normalDough == true}">
+        <p>Normal Dough</p>
+    </div>
+    <div th:if="${mypizza.glutenFreeDough == true}">
+        <p>Gluten Free Dough</p>
+    </div>
+    <div th:if="${mypizza.redSauce == true}">
+        <p>Red Sauce</p>
+    </div>
+    <div th:if="${mypizza.whiteSauce == true}">
+        <p>White Sauce</p>
+    </div>
+    <div th:if="${mypizza.noSauce == true}">
+        <p>No Sauce</p>
+    </div>
+    <div th:if="${mypizza.cheese == true}">
+        <p>Cheese</p>
+    </div>
+    <div th:if="${mypizza.noCheese == true}">
+        <p>No Cheese</p>
+    </div>
+    <div th:if="${mypizza.mushroom == true}">
+        <p>Mushroom</p>
+    </div>
+    <div th:if="${mypizza.greenPepper == true}">
+        <p>Green Pepper</p>
+    </div>
+    <div th:if="${mypizza.onions == true}">
+        <p>Onion</p>
+    </div>
+    <div th:if="${mypizza.bacon == true}">
+        <p>Bacon</p>
+    </div>
+    <div th:if="${mypizza.pepperoni == true}">
+        <p>Pepperoni</p>
+    </div>
+    <div th:if="${mypizza.sausage == true}">
+        <p>Sausage</p>
+    </div>
+
+
+    <p th:text="${mypizza.price}"></p>
+    <p th:text="${mypizza.time}"></p>
+    <a th:href="@{/update/{id} (id=${mypizza.id})}">Update</a>
+    <a th:href="@{/detail/{id} (id=${mypizza.id})}">Details</a>
+    <a th:href="@{/delete/{id} (id=${mypizza.id})}">Delete</a>
+
+</div>
+
+</body>
+</html>
