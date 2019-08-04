@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 
 @Controller
 public class HomeController {
@@ -40,7 +43,16 @@ public class HomeController {
 
     @RequestMapping("/adminedit")
     public String adminEdit(Model model) {
+        double sumOfTotalSales = 0;
+        List<Double> salesContainer = new ArrayList<>();
+        orderRepository.findAll().forEach(pizzaOrder -> salesContainer.add(pizzaOrder.getPrice()));
+        for (int i = 0; i < salesContainer.size(); i++) {
+            sumOfTotalSales += salesContainer.get(i);
+        }
+
+
         model.addAttribute("pizzaorders", orderRepository.findAll());
+        model.addAttribute("sum", sumOfTotalSales);
         return "adminEditCustomersOrder";
     }
 
