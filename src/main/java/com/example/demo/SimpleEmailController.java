@@ -60,7 +60,7 @@ public class SimpleEmailController {
         return templateEngine.process("mailtemplate", context);
     }
 
-    public void SendSimpleEmail( String content) {
+    public void SendSimpleEmail(String recipent ,String content) {
         try {
             Message message = new MimeMessage(GetSession());
 
@@ -68,7 +68,7 @@ public class SimpleEmailController {
             message.setFrom(new InternetAddress("noreplythinh@gmail.com"));
 
             //email address you're sending email to ( to user email )
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("tpham130@montgomerycollege.edu"));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipent));
 
             //email  subject
             message.setSubject("Hello My Friend");
