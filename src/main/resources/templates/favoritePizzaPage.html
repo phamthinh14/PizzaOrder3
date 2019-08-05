@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="www.thymeleaf.org/extras/spring-security">
 <head>
 
-    <title>Home</title>
+    <title>Favorite Pizza Page</title>
     <th:block th:replace="base :: header"></th:block>
 </head>
 <body>
@@ -63,7 +63,6 @@
     <p th:text="${mypizza.price}"></p>
     <p th:text="${mypizza.time}"></p>
     <a th:href="@{/update/{id} (id=${mypizza.id})}">Update</a>
-    <a th:href="@{/favoritepizzas/{id} (id=${mypizza.id})}">Save As Favorite</a>
     <a th:href="@{/detail/{id} (id=${mypizza.id})}">Details</a>
     <a th:href="@{/delete/{id} (id=${mypizza.id})}">Delete</a>
 

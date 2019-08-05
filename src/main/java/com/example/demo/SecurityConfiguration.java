@@ -50,7 +50,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 //working previous     .logoutSuccessUrl("/login").permitAll()
                 //the following one line to replace above //the following two line to replace above two
-                .logoutSuccessUrl("/").permitAll().permitAll() // if logout is successful it'll take us back to logout page.
+                .logoutSuccessUrl("/login").permitAll().permitAll() // if logout is successful it'll take us back to logout page.
                 .and()
                 .httpBasic();
         http

@@ -28,7 +28,7 @@ public class SSUserDetailsService implements UserDetailsService {
                 System.out.println("User is not found with the username" + user.toString());
                 return null;
             }
-            System.out.println(" Useris found with the username " + user.toString());
+            System.out.println(" User is found with the username " + user.toString());
             return new org.springframework.security.core.userdetails.User(
                     user.getUsername(),
                     user.getPassword(),

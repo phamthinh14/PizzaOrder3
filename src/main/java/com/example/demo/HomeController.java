@@ -3,12 +3,12 @@ package com.example.demo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.lang.reflect.Array;
+import java.util.*;
+import java.util.function.Consumer;
 
 @Controller
 public class HomeController {
@@ -16,10 +16,13 @@ public class HomeController {
     private UserService userService;
 
     @Autowired
-    OrderRepository orderRepository;
+    private OrderRepository orderRepository;
+
+    @Autowired
+    UserRepository userRepository;
 
     @RequestMapping("/")
-    public String land(){
+    public String land() {
         return "landing";
     }
 
@@ -27,6 +30,119 @@ public class HomeController {
     public String homePage(Model model) {
         model.addAttribute("pizzaorders", orderRepository.findAllByUser(userService.getUser()));
         return "home";
+    }
+
+
+
+    @RequestMapping("/adminview")
+    public String adminView(Model model) {
+//List Customers information
+        model.addAttribute("customersInfo", userRepository.findAll());
+        return "admindisplayCustomersInfo";
+    }
+
+    @RequestMapping("/adminedit")
+    public String adminEdit(Model model) {
+//        Update Detail and Delete a customer's order
+        double sumOfTotalSales = totalSales();
+        String customerTopThree = findTopToppings();
+        model.addAttribute("pizzaorders", orderRepository.findAll());
+        model.addAttribute("sum", sumOfTotalSales);
+        model.addAttribute("toppings", customerTopThree);
+        return "adminEditCustomersOrder";
+    }
+
+    private String findTopToppings() {
+        String result = "";
+        int countMushRoom = 0;
+        int countOnions = 0;
+        int countGreenpepper = 0;
+        int countBacon = 0;
+        int countPepperoni = 0;
+        int countSausage = 0;
+        HashMap<String, Integer> toppingsList = new HashMap<>();
+
+        for (PizzaOrder order : orderRepository.findAll()) {
+            if (order.isMushroom()) {
+                countMushRoom++;
+            }
+            if (order.isOnions()) {
+                countOnions++;
+            }
+            if (order.isGreenPepper()) {
+                countGreenpepper++;
+            }
+            if (order.isBacon()) {
+                countBacon++;
+            }
+            if (order.isPepperoni()) {
+                countPepperoni++;
+            }
+            if (order.isSausage()) {
+                countSausage++;
+            }
+        }
+
+        toppingsList.put("Mushroom", countMushRoom);
+        toppingsList.put("Onions", countOnions);
+        toppingsList.put("GreenPepper", countGreenpepper);
+        toppingsList.put("Bacon", countBacon);
+        toppingsList.put("Pepperoni", countPepperoni);
+        toppingsList.put("Sausage", countSausage);
+
+        Map<String, Integer> hm1 = sortByValue(toppingsList);
+        int count = 0;
+        for (Map.Entry<String, Integer> en : hm1.entrySet()) {
+            System.out.println("Key = " + en.getKey() +
+                    ", Value = " + en.getValue());
+            if (count < 3) {
+                result += en.getKey() + " ";
+                count++;
+            }
+        }
+        return result;
+    }
+
+    public HashMap<String, Integer> sortByValue(HashMap<String, Integer> hm) {
+        // Create a list from elements of HashMap
+        List<Map.Entry<String, Integer>> list =
+                new LinkedList<Map.Entry<String, Integer>>(hm.entrySet());
+
+        // Sort the list
+        Collections.sort(list, (o1, o2) -> (o2.getValue()).compareTo(o1.getValue()));
+
+        // put data from sorted list to hashmap
+        HashMap<String, Integer> temp = new LinkedHashMap<String, Integer>();
+        for (Map.Entry<String, Integer> aa : list) {
+            temp.put(aa.getKey(), aa.getValue());
+        }
+        return temp;
+    }
+
+    private double totalSales() {
+        double sumOfTotalSales = 0;
+        List<Double> salesContainer = new ArrayList<>();
+        orderRepository.findAll().forEach(pizzaOrder -> salesContainer.add(pizzaOrder.getPrice()));
+        for (int i = 0; i < salesContainer.size(); i++) {
+            sumOfTotalSales += salesContainer.get(i);
+        }
+        return sumOfTotalSales;
+    }
+
+    @RequestMapping("/inputusername")
+    public String userNameInputForm() {
+//        This method will allow an admin to input a String of username to find
+        return "userNameInputForm";
+    }
+
+    @RequestMapping("/processinputusername")
+    public String findUserName(@RequestParam("nameToFind") String nameToFind, Model model) {
+//        When the admin submit that username(String) it will be pass to this method to find that user
+        //When we found a User, it will display first and last name, phone number, and email of that user
+        //If the user is not found in the database, it will print "User is not found"
+        User tempUser = userRepository.findByUsername(nameToFind);
+        model.addAttribute("users", tempUser);
+        return "listUserFoundByName";
     }
 
     @GetMapping("/add")
@@ -37,9 +153,7 @@ public class HomeController {
 
     @PostMapping("/process")
     public String processOrderForm(@Valid PizzaOrder pizzaOrder) {
-//        if (result.hasErrors()) {
-//            return "orderform";
-//        }
+
         if (pizzaOrder.isGlutenFreeDough()) {
             pizzaOrder.setPrice(pizzaOrder.addUpTotal());
         }
@@ -82,7 +196,14 @@ public class HomeController {
         if (pizzaOrder.isLargeSize()) {
             pizzaOrder.setPrice(pizzaOrder.addUpTotal() + 2);
         }
-        pizzaOrder.setUser(userService.getUser());
+
+//        User currentUser = ;
+        if (pizzaOrder.getUser() != null) {
+            pizzaOrder.setUser(pizzaOrder.getUser());
+        } else {
+            pizzaOrder.setUser(userService.getUser());
+        }
+
         orderRepository.save(pizzaOrder);
         return "redirect:/order";
     }
@@ -91,6 +212,14 @@ public class HomeController {
     public String showDetailPizza(@PathVariable("id") long id, Model model) {
         model.addAttribute("pizzaorder", orderRepository.findById(id).get());
         return "show";
+    }
+
+    @RequestMapping("/favoritepizzas/{id}")
+    public String showFavoritePizzaPage(@PathVariable("id") long id, Model model) {
+        List<PizzaOrder> favoriteList = new ArrayList<>();
+        favoriteList.add(orderRepository.findById(id).get());
+        model.addAttribute("pizzaorders", favoriteList);
+        return "favoritePizzaPage";
     }
 
     @RequestMapping("/update/{id}")

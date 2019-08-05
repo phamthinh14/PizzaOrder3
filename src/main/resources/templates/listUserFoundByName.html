@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Found By Name</title>
+</head>
+<body>
+
+<!--<th:block th:each="userInfo : ${users}">-->
+<!--<p th:text="${userInfo.s}"></p>-->
+<!--</th:block>-->
+<th:block th:if="${users} == null">
+    <p>User is not found</p>
+</th:block>
+
+<th:block th:if="${users} != null">
+    <p th:text="${users.username}"></p>
+    <p th:text="${users.phonenum}"></p>
+    <p th:text="${users.firstName}"></p>
+    <p th:text="${users.lastName}"></p>
+    <p th:text="${users.email}"></p>
+</th:block>
+
+</body>
+</html>

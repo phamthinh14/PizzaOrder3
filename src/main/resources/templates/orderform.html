@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Roboto|Cabin+Sketch:400,700&display=swap" rel="stylesheet">
 
+
 </head>
 <style>
    h3{font-size:3rem; font-weight:bold; font-family: "Cabin Sketch"}
@@ -53,6 +54,7 @@
 </style>
 <body>
 <div th:replace="base :: nav"></div>
+<<<<<<< HEAD
     <div class="row">
         <div class="col-2"></div>
         <div class="col-8">
@@ -144,7 +146,117 @@
         <div class="col-2"></div>
     </div>
 
+=======
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+        <form action="#"
+              th:action="@{/process}"
+              th:object="${pizzaorder}"
+              method="post"
+              onsubmit="return checkSelectAtLeastOne(this);">
 
+            <!--<script type="text/javascript" language="JavaScript">-->
+            <!--&lt;!&ndash;-->
+            <!--function checkSelectAtLeastOne(theForm) {-->
+            <!--if (-->
+            <!--theForm.smallSize.checked == false &&-->
+            <!--theForm.mediumSize.checked == false &&-->
+            <!--theForm.largeSize.checked == false &&-->
+            <!--theForm.normalDough.checked == false &&-->
+            <!--theForm.glutenFreeDough.checked == false &&-->
+            <!--theForm.redSauce.checked == false &&-->
+            <!--theForm.whiteSauce.checked == false &&-->
+            <!--theForm.noSauce.checked == false &&-->
+            <!--theForm.cheese.checked == false &&-->
+            <!--theForm.noCheese.checked == false &&-->
+            <!--theForm.mushroom.checked == false &&-->
+            <!--theForm.onions.checked == false &&-->
+            <!--theForm.greenPepper.checked == false &&-->
+            <!--theForm.bacon.checked == false &&-->
+            <!--theForm.pepperoni.checked == false &&-->
+            <!--theForm.sausage.checked == false-->
+            <!--) {-->
+            <!--alert('You did not select anything! Make Sure you pick one in each category');-->
+            <!--return false;-->
+            <!--} else {-->
+            <!--return true;-->
+            <!--}-->
+
+            <!--}-->
+
+            <!--//&ndash;&gt;-->
+            <!--</script>-->
+
+
+            <!--These are the contents-->
+            <input type="hidden" th:field="*{id}">
+            <!--Size Section-->
+            Choose A Size:
+
+            Small<input id="1" onclick="selectOneSizeOnly(this.id)"
+                        type="checkbox" name="smallSize"
+                        checked>
+            Medium<input id="2" onclick="selectOneSizeOnly(this.id)" type="checkbox" name="mediumSize">
+            Large<input id="3" onclick="selectOneSizeOnly(this.id)" type="checkbox" name="largeSize">
+            <!--End Size Section-->
+            <!--Dough Section-->
+            <br>
+            <h3>Dough</h3>
+
+            Normal: <input id="4" onclick="selectOneDoughOnly(this.id)" type="checkbox" name="normalDough" checked>
+            Gluten Free: <input id="5" onclick="selectOneDoughOnly(this.id)" type="checkbox" name="glutenFreeDough"
+        >
+            <br>
+            <br>
+            <!--End Dough Section-->
+            <!--Sauce Section-->
+            Sauce:
+
+            Red Sauce: <input id="6" onclick="selectOneSauceOnly(this.id)" type="checkbox" name="redSauce"
+                              checked>
+            White Sauce: <input id="7" onclick="selectOneSauceOnly(this.id)" type="checkbox" name="whiteSauce">
+            No Sauce: <input id="8" onclick="selectOneSauceOnly(this.id)" type="checkbox" name="noSauce">
+            <br>
+            <!--End Sauce Section-->
+            <!--Cheese Section-->
+            <br>
+            Cheese:
+
+            Cheese : <input id="9" onclick="cheeseOrNoCheese(this.id)" type="checkbox" name="cheese" checked>
+            No Cheese : <input id="10" onclick="cheeseOrNoCheese(this.id)" type="checkbox" name="noCheese">
+            <br>
+            <!--End Cheese Section-->
+            <!--Vegetable-->
+            <br>
+            Vegetable:
+
+            Mushroom : <input id="11" type="checkbox" name="mushroom" checked>
+            Onion : <input id="12" type="checkbox" name="onions">
+            Green Pepper : <input id="13" type="checkbox" name="greenPepper">
+            <br>
+            <!--End Vegetable-->
+            <!--Meat Section-->
+            <br>
+            Meat:
+
+            Bacon : <input id="14" type="checkbox" name="bacon">
+            Pepperoni : <input id="15" type="checkbox" name="pepperoni" checked>
+            Sausage : <input id="16" type="checkbox" name="sausage">
+            <!--Meat Section-->
+
+
+            <br>
+            <input type="hidden" th:field="*{time}">
+            <input type="hidden" th:field="*{user}">
+            <input type="submit" value="Submit">
+            <!--END-->
+        </form>
+>>>>>>> 9834497ee3c9eb0070012586c0e82e15c82e4605
+
+    </div>
+    <div class="col-2"></div>
+</div>
 
 
 </body>
