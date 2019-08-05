@@ -6,8 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
+import java.lang.reflect.Array;
+import java.util.*;
 import java.util.function.Consumer;
 
 @Controller
@@ -43,9 +43,11 @@ public class HomeController {
     public String adminEdit(Model model) {
 //        Update Detail and Delete a customer's order
         double sumOfTotalSales = totalSales();
+        String customerTopThree = findTopToppings();
 
         model.addAttribute("pizzaorders", orderRepository.findAll());
         model.addAttribute("sum", sumOfTotalSales);
+        model.addAttribute("toppings", customerTopThree);
         return "adminEditCustomersOrder";
     }
 
@@ -57,6 +59,7 @@ public class HomeController {
         int countBacon = 0;
         int countPepperoni = 0;
         int countSausage = 0;
+        HashMap<String, Integer> toppingsList = new HashMap<>();
 
         for (PizzaOrder order : orderRepository.findAll()) {
             if (order.isMushroom()) {
@@ -79,7 +82,45 @@ public class HomeController {
             }
         }
 
-        return null;
+        toppingsList.put("Mushroom", countMushRoom);
+        toppingsList.put("Onions", countOnions);
+        toppingsList.put("GreenPepper", countGreenpepper);
+        toppingsList.put("Bacon", countBacon);
+        toppingsList.put("Pepperoni", countPepperoni);
+        toppingsList.put("Sausage", countSausage);
+
+        Map<String, Integer> hm1 = sortByValue(toppingsList);
+        int count = 0;
+        for (Map.Entry<String, Integer> en : hm1.entrySet()) {
+            System.out.println("Key = " + en.getKey() +
+                    ", Value = " + en.getValue());
+            if (count < 3) {
+                result += en.getKey() + " ";
+                count++;
+            }
+        }
+        return result;
+    }
+
+    public HashMap<String, Integer> sortByValue(HashMap<String, Integer> hm) {
+        // Create a list from elements of HashMap
+        List<Map.Entry<String, Integer>> list =
+                new LinkedList<Map.Entry<String, Integer>>(hm.entrySet());
+
+        // Sort the list
+        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+            public int compare(Map.Entry<String, Integer> o1,
+                               Map.Entry<String, Integer> o2) {
+                return (o2.getValue()).compareTo(o1.getValue());
+            }
+        });
+
+        // put data from sorted list to hashmap
+        HashMap<String, Integer> temp = new LinkedHashMap<String, Integer>();
+        for (Map.Entry<String, Integer> aa : list) {
+            temp.put(aa.getKey(), aa.getValue());
+        }
+        return temp;
     }
 
     private double totalSales() {
