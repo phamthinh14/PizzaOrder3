@@ -41,3 +41,7 @@ h3{
     left:10px;
     top:10px;
 }
+
+.form-check-inline{
+    padding-left:35%; !important
+}
