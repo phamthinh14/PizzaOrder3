@@ -90,4 +90,10 @@ public class HomeController {
         orderRepository.deleteById(id);
         return "redirect:/";
     }
+
+    /* Addition for separate log out page */
+    @RequestMapping("/logoutconfirm")
+    public String logoutconfirm(){
+        return "logoutconfirm";
+    }
 }

@@ -6,8 +6,6 @@
 </head>
 <body>
 
-<a href="/">Home</a>
-
 <div th:if="${pizzaorder.normalDough == true}">
     <p>Normal Dough</p>
 </div>
@@ -48,7 +46,9 @@
 
 <p th:text="${pizzaorder.price}"></p>
 <span>Your Pizza will arrive at <p th:text="${pizzaorder.time}"></p></span>
-</div>
+
+<br/>
+<div><a href="/">Home</a></div>
 
 </body>
 </html>

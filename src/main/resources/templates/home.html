@@ -1,12 +1,17 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
 </head>
 <body>
-
-<a href="/add">Add a pizza</a>
+<div sec:authorize="!isAuthenticated()">
+    <a href="/login">Login</a>
+</div>
+<div sec:authorize="isAuthenticated()">
+    <a href="/add">Add Pizza Order</a>
+</div>
 <h2>Order Summary</h2>
 <div th:each="mypizza : ${pizzaorders}">
     <div th:if="${mypizza.normalDough == true}">
@@ -49,11 +54,14 @@
 
     <p th:text="${mypizza.price}"></p>
     <p th:text="${mypizza.time}"></p>
-    <a th:href="@{/update/{id} (id=${mypizza.id})}">Update</a>
-
+    <a sec:authorize="isAuthenticated()" th:href="@{/update/{id} (id=${mypizza.id})}">Update</a>
     <a th:href="@{/detail/{id} (id=${mypizza.id})}">Details</a>
+    <a sec:authorize="isAuthenticated()" th:href="@{/delete/{id} (id=${mypizza.id})}">Delete</a>
+</div>
 
-    <a th:href="@{/delete/{id} (id=${mypizza.id})}">Delete</a>
+<br/>
+<div sec:authorize="isAuthenticated()">
+    <a href="/logout">Logout</a>
 </div>
 
 </body>
