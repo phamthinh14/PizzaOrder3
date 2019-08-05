@@ -69,10 +69,17 @@
 
 </div>
 
-<div>
-    <span>Total Sales: <p th:text="${sum}"></p></span>
-    <span>Top 3 Toppings: <p th:text="${toppings}"></p></span>
-</div>
+<br>
+<button type="button" class="btn btn-primary">
+    CUSTOMERS' FAVORITE TOPPINGS <span class="badge badge-light" th:text="${toppings}+', '"></span>
+</button>
+<br>
+<br>
+<button type="button" class="btn btn-primary">
+    TOTAL SALES OF TODAY <span class="badge badge-light" th:text="'$'+${sum}+'/$500'"></span>
+</button>
+<br>
 
+<th:block th:replace="base :: jslinks"></th:block>
 </body>
 </html>

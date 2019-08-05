@@ -2,10 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <th:block th:replace="base :: header"></th:block>
     <title>Detail</title>
 </head>
 <body>
-
+<div th:replace="base :: nav"></div>
 <a href="/">Home</a>
 
 <div th:if="${pizzaorder.smallSize == true}">
@@ -61,6 +62,6 @@
 <p th:text="${pizzaorder.price}"></p>
 <span>Your Pizza will arrive at <p th:text="${pizzaorder.time}"></p></span>
 </div>
-
+<th:block th:replace="base :: jslinks"></th:block>
 </body>
 </html>

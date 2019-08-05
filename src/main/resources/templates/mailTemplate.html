@@ -2,11 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <th:block th:replace="base :: header"></th:block>
     <title>Mail Template</title>
 </head>
 <body>
-
+<div th:replace="base :: nav"></div>
 <p>A order summary has been sent to your email</p>
-
+<th:block th:replace="base :: jslinks"></th:block>
 </body>
 </html>

@@ -2,10 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <th:block th:replace="base :: header"></th:block>
     <title>Edit Order Form</title>
 </head>
 <body>
-
+<div th:replace="base :: nav"></div>
 <form action="#"
       th:action="@{/process}"
       th:object="${pizzaorder}"
@@ -149,6 +150,6 @@
     <input type="submit" value="Submit">
     <!--END-->
 </form>
-
+<th:block th:replace="base :: jslinks"></th:block>
 </body>
 </html>
