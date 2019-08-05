@@ -3,10 +3,7 @@ package com.example.demo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -37,23 +34,78 @@ public class HomeController {
 
     @RequestMapping("/adminview")
     public String adminView(Model model) {
+//List Customers information
         model.addAttribute("customersInfo", userRepository.findAll());
         return "admindisplayCustomersInfo";
     }
 
     @RequestMapping("/adminedit")
     public String adminEdit(Model model) {
+//        Update Detail and Delete a customer's order
+        double sumOfTotalSales = totalSales();
+
+        model.addAttribute("pizzaorders", orderRepository.findAll());
+        model.addAttribute("sum", sumOfTotalSales);
+        return "adminEditCustomersOrder";
+    }
+
+    private String findTopToppings() {
+        String result = "";
+        int countMushRoom = 0;
+        int countOnions = 0;
+        int countGreenpepper = 0;
+        int countBacon = 0;
+        int countPepperoni = 0;
+        int countSausage = 0;
+
+        for (PizzaOrder order : orderRepository.findAll()) {
+            if (order.isMushroom()) {
+                countMushRoom++;
+            }
+            if (order.isOnions()) {
+                countOnions++;
+            }
+            if (order.isGreenPepper()) {
+                countGreenpepper++;
+            }
+            if (order.isBacon()) {
+                countBacon++;
+            }
+            if (order.isPepperoni()) {
+                countPepperoni++;
+            }
+            if (order.isSausage()) {
+                countSausage++;
+            }
+        }
+
+        return null;
+    }
+
+    private double totalSales() {
         double sumOfTotalSales = 0;
         List<Double> salesContainer = new ArrayList<>();
         orderRepository.findAll().forEach(pizzaOrder -> salesContainer.add(pizzaOrder.getPrice()));
         for (int i = 0; i < salesContainer.size(); i++) {
             sumOfTotalSales += salesContainer.get(i);
         }
+        return sumOfTotalSales;
+    }
 
+    @RequestMapping("/inputusername")
+    public String userNameInputForm() {
+//        This method will allow an admin to input a String of username to find
+        return "userNameInputForm";
+    }
 
-        model.addAttribute("pizzaorders", orderRepository.findAll());
-        model.addAttribute("sum", sumOfTotalSales);
-        return "adminEditCustomersOrder";
+    @RequestMapping("/processinputusername")
+    public String findUserName(@RequestParam("nameToFind") String nameToFind, Model model) {
+//        When the admin submit that username(String) it will be pass to this method to find that user
+        //When we found a User, it will display first and last name, phone number, and email of that user
+        //If the user is not found in the database, it will print "User is not found"
+        User tempUser = userRepository.findByUsername(nameToFind);
+        model.addAttribute("users", tempUser);
+        return "listUserFoundByName";
     }
 
     @GetMapping("/add")
@@ -64,9 +116,7 @@ public class HomeController {
 
     @PostMapping("/process")
     public String processOrderForm(@Valid PizzaOrder pizzaOrder) {
-//        if (result.hasErrors()) {
-//            return "orderform";
-//        }
+
         if (pizzaOrder.isGlutenFreeDough()) {
             pizzaOrder.setPrice(pizzaOrder.addUpTotal());
         }

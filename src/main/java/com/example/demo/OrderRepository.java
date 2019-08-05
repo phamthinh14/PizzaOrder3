@@ -6,5 +6,4 @@ public interface OrderRepository extends CrudRepository<PizzaOrder, Long> {
 //    void deleteByUserID();
     Iterable<PizzaOrder> findAllByUser(User user);
 
-
 }
