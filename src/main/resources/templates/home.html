@@ -63,12 +63,12 @@
     <p th:text="${mypizza.price}"></p>
     <p th:text="${mypizza.time}"></p>
     <a th:href="@{/update/{id} (id=${mypizza.id})}">Update</a>
-    <a th:href="@{/favoritepizzas/{id} (id=${mypizza.id})}">Save As Favorite</a>
+    <!--<a th:href="@{/favoritepizzas/{id} (id=${mypizza.id})}">Save As Favorite</a>-->
     <a th:href="@{/detail/{id} (id=${mypizza.id})}">Details</a>
     <a th:href="@{/delete/{id} (id=${mypizza.id})}">Delete</a>
 
 </div>
-<a href="/sendemail">Click to submit your Order</a>
+<a href="/sendemail" sec:authorize="hasAuthority('USER')">Click to submit your Order</a>
 
 </body>
 </html>
