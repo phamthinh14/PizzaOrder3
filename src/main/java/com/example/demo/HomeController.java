@@ -32,6 +32,8 @@ public class HomeController {
         return "home";
     }
 
+
+
     @RequestMapping("/adminview")
     public String adminView(Model model) {
 //List Customers information
@@ -44,7 +46,6 @@ public class HomeController {
 //        Update Detail and Delete a customer's order
         double sumOfTotalSales = totalSales();
         String customerTopThree = findTopToppings();
-
         model.addAttribute("pizzaorders", orderRepository.findAll());
         model.addAttribute("sum", sumOfTotalSales);
         model.addAttribute("toppings", customerTopThree);
@@ -211,6 +212,14 @@ public class HomeController {
     public String showDetailPizza(@PathVariable("id") long id, Model model) {
         model.addAttribute("pizzaorder", orderRepository.findById(id).get());
         return "show";
+    }
+
+    @RequestMapping("/favoritepizzas/{id}")
+    public String showFavoritePizzaPage(@PathVariable("id") long id, Model model) {
+        List<PizzaOrder> favoriteList = new ArrayList<>();
+        favoriteList.add(orderRepository.findById(id).get());
+        model.addAttribute("pizzaorders", favoriteList);
+        return "favoritePizzaPage";
     }
 
     @RequestMapping("/update/{id}")
