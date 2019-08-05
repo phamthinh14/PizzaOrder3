@@ -2,14 +2,15 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <th:block th:replace="base :: header"></th:block>
     <title>UserName Input Form</title>
 </head>
 <body>
-
+<div th:replace="base :: nav"></div>
 <form action="#" th:action="@{/processinputusername}" method="post">
     Enter a USERNAME to find: <input type="text" name="nameToFind">
     <input type="submit" value="Submit">
 </form>
-
+<th:block th:replace="base :: jslinks"></th:block>
 </body>
 </html>

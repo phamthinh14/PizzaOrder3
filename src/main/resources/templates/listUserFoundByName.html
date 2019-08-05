@@ -2,10 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <th:block th:replace="base :: header"></th:block>
     <title>User Found By Name</title>
 </head>
 <body>
-
+<div th:replace="base :: nav"></div>
 <!--<th:block th:each="userInfo : ${users}">-->
 <!--<p th:text="${userInfo.s}"></p>-->
 <!--</th:block>-->
@@ -20,6 +21,6 @@
     <p th:text="${users.lastName}"></p>
     <p th:text="${users.email}"></p>
 </th:block>
-
+<th:block th:replace="base :: jslinks"></th:block>
 </body>
 </html>
