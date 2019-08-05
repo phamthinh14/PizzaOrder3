@@ -15,11 +15,11 @@
 </th:block>
 
 <th:block th:if="${users} != null">
-    <p th:text="${users.username}"></p>
-    <p th:text="${users.phonenum}"></p>
-    <p th:text="${users.firstName}"></p>
-    <p th:text="${users.lastName}"></p>
-    <p th:text="${users.email}"></p>
+    <span>Username: <p th:text="${users.username}"></p></span>
+    <span>Phone Number: <p th:text="${users.phonenum}"></p> </span>
+    <span>First Name: <p th:text="${users.firstName}"></p></span>
+    <span>Last Name: <p th:text="${users.lastName}"></p></span>
+    <span>Email: <p th:text="${users.email}"></p></span>
 </th:block>
 <th:block th:replace="base :: jslinks"></th:block>
 </body>
