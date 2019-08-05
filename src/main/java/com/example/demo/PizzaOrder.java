@@ -232,4 +232,53 @@ public class PizzaOrder {
     public double addUpTotal() {
         return getPrice() + 1;
     }
+
+    @Override
+    public String toString() {
+        String result = "";
+        if (isGlutenFreeDough()) {
+            result += " Gluten-Free Dough ";
+        }
+        if (isNormalDough()) {
+            result += " Normal Dough ";
+        }
+        if (isRedSauce()) {
+            result += " Red Sauce ";
+        }
+        if (isWhiteSauce()) {
+            result += " White Sauce ";
+        }
+        if (isCheese()) {
+            result += " Cheese Included ";
+        }
+        if (isMushroom()) {
+            result += " Mushroom ";
+        }
+        if (isOnions()) {
+            result += " Onions ";
+        }
+        if (isGreenPepper()) {
+            result += " Green Pepper ";
+        }
+        if (isBacon()) {
+            result += " Bacon ";
+        }
+        if (isPepperoni()) {
+            result += " Pepperoni ";
+        }
+        if (isSausage()) {
+            result += " Sausage ";
+        }
+        if (isSmallSize()) {
+            result += " Size Small ";
+        }
+        if (isMediumSize()) {
+            result += " Size Medium ";
+        }
+        if (isLargeSize()) {
+            result += " Size Large ";
+        }
+        result += " " + getPrice() + " ";
+        return result;
+    }
 }

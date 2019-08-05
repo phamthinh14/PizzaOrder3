@@ -3,151 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <title>Order Form</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Roboto|Cabin+Sketch:400,700&display=swap" rel="stylesheet">
 
 
 </head>
 <style>
-   h3{font-size:3rem; font-weight:bold; font-family: "Cabin Sketch"}
-   h1{font-size:3rem; font-weight:bold; font-family: "Cabin Sketch"}
-   /*#crust{*/
-       /*position:absolute;*/
-       /*height:300px;*/
-       /*width:300px;*/
-       /*background-color: orange;*/
-       /*border-radius:50%;*/
-       /*z-index:5;*/
-   /*}*/
+    h3 {
+        font-size: 3rem;
+        font-weight: bold;
+        font-family: "Cabin Sketch"
+    }
 
-   /*#sauce{*/
-       /*position:absolute;*/
-       /*height:280px;*/
-       /*width:280px;*/
-       /*background-color: red;;*/
-       /*border-radius:50%;*/
-       /*z-index:6;*/
-       /*left:10px;*/
-       /*top:10px;*/
-   /*}*/
+    h1 {
+        font-size: 3rem;
+        font-weight: bold;
+        font-family: "Cabin Sketch"
+    }
 
-   /*!*Changing Sauce with radio button  *!*/
-   /*#7:checked ~ div #sauce{*/
-       /*background-color:#fcf0d6;*/
-   /*}*/
+    /*#crust{*/
+    /*position:absolute;*/
+    /*height:300px;*/
+    /*width:300px;*/
+    /*background-color: orange;*/
+    /*border-radius:50%;*/
+    /*z-index:5;*/
+    /*}*/
 
-   /*#8:checked ~ div #sauce{*/
-       /*background:transparent;*/
-   /*}*/
+    /*#sauce{*/
+    /*position:absolute;*/
+    /*height:280px;*/
+    /*width:280px;*/
+    /*background-color: red;;*/
+    /*border-radius:50%;*/
+    /*z-index:6;*/
+    /*left:10px;*/
+    /*top:10px;*/
+    /*}*/
 
+    /*!*Changing Sauce with radio button  *!*/
+    /*#7:checked ~ div #sauce{*/
+    /*background-color:#fcf0d6;*/
+    /*}*/
 
-   /*!* Changing Size with button *!*/
-   /*#2:checked ~ div #sauce{*/
-       /*height:350px;*/
-       /*width:350px;*/
-   /*}*/
+    /*#8:checked ~ div #sauce{*/
+    /*background:transparent;*/
+    /*}*/
 
-   /*#2:checked ~ div #crust{*/
-       /*height:370px;*/
-       /*width:370px;*/
-   /*}*/
+    /*!* Changing Size with button *!*/
+    /*#2:checked ~ div #sauce{*/
+    /*height:350px;*/
+    /*width:350px;*/
+    /*}*/
+
+    /*#2:checked ~ div #crust{*/
+    /*height:370px;*/
+    /*width:370px;*/
+    /*}*/
 </style>
 <body>
 <div th:replace="base :: nav"></div>
-    <div class="row">
-        <div class="col-2"></div>
-        <div class="col-8">
-            <h1>Build Your Own Pizza!</h1>
-            <form action="#"
-                  th:action="@{/process}"
-                  th:object="${pizzaorder}"
-                  method="post"
-                  onsubmit="return checkSelectAtLeastOne(this);">
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+        <h1>Build Your Own Pizza!</h1>
+        <form action="#"
+              th:action="@{/process}"
+              th:object="${pizzaorder}"
+              method="post"
+              onsubmit="return checkSelectAtLeastOne(this);">
 
-                <!--These are the contents-->
-                <input type="hidden" th:field="*{id}">
-                <!--Size Section-->
-                <h3>-Size-</h3>
+            <!--These are the contents-->
+            <input type="hidden" th:field="*{id}">
+            <!--Size Section-->
+            <h3>-Size-</h3>
 
-                <div class="form-check form-check-inline">
-                    <label class="form-check-label" for="1">Small</label>
-                    <input id="1" onclick="selectOneSizeOnly(this.id)" type="checkbox" name="smallSize" checked>
+            <div class="form-check form-check-inline">
+                <label class="form-check-label" for="1">Small</label>
+                <input id="1" onclick="selectOneSizeOnly(this.id)" type="checkbox" name="smallSize" checked>
 
-                    <label class="form-check-label" for="2">Medium</label>
-                    <input id="2" onclick="selectOneSizeOnly(this.id)" type="checkbox" name="mediumSize">
+                <label class="form-check-label" for="2">Medium</label>
+                <input id="2" onclick="selectOneSizeOnly(this.id)" type="checkbox" name="mediumSize">
 
-                    <label class="form-check-label" for="3">Large</label>
-                    <input id="3" onclick="selectOneSizeOnly(this.id)" type="checkbox" name="largeSize">
+                <label class="form-check-label" for="3">Large</label>
+                <input id="3" onclick="selectOneSizeOnly(this.id)" type="checkbox" name="largeSize">
 
-                    <!--<div style="position:relative;">-->
-                        <!--<div id="crust"></div>-->
-                        <!--<div id="sauce"></div>-->
-                    <!--</div>-->
+                <!--<div style="position:relative;">-->
+                <!--<div id="crust"></div>-->
+                <!--<div id="sauce"></div>-->
+                <!--</div>-->
 
-                </div>
-                <!--End Size Section-->
-                <!--Dough Section-->
-                <br>
-                <h3>-Dough-</h3>
-                <div class="row">
-                    <label class="form-check-label" for="4">Normal</label>
-                    <input id="4" onclick="selectOneDoughOnly(this.id)" type="checkbox" name="normalDough" checked>
+            </div>
+            <!--End Size Section-->
+            <!--Dough Section-->
+            <br>
+            <h3>-Dough-</h3>
+            <div class="row">
+                <label class="form-check-label" for="4">Normal</label>
+                <input id="4" onclick="selectOneDoughOnly(this.id)" type="checkbox" name="normalDough" checked>
 
-                    <label class="form-check-label" for="5">Gluten Free</label>
-                    <input id="5" onclick="selectOneDoughOnly(this.id)" type="checkbox" name="glutenFreeDough">
-                </div>
-                <br>
-                <br>
-                <!--End Dough Section-->
-                <!--Sauce Section-->
-                <h3>Sauce:</h3>
+                <label class="form-check-label" for="5">Gluten Free</label>
+                <input id="5" onclick="selectOneDoughOnly(this.id)" type="checkbox" name="glutenFreeDough">
+            </div>
+            <br>
+            <br>
+            <!--End Dough Section-->
+            <!--Sauce Section-->
+            <h3>Sauce:</h3>
 
-                Red Sauce: <input id="6" onclick="selectOneSauceOnly(this.id)" type="checkbox" name="redSauce"
-                                  checked>
-                White Sauce: <input id="7" onclick="selectOneSauceOnly(this.id)" type="checkbox" name="whiteSauce">
-                No Sauce: <input id="8" onclick="selectOneSauceOnly(this.id)" type="checkbox" name="noSauce">
-                <br>
-                <!--End Sauce Section-->
-                <!--Cheese Section-->
-                <br>
-               <h3>Cheese:</h3>
+            Red Sauce: <input id="6" onclick="selectOneSauceOnly(this.id)" type="checkbox" name="redSauce"
+                              checked>
+            White Sauce: <input id="7" onclick="selectOneSauceOnly(this.id)" type="checkbox" name="whiteSauce">
+            No Sauce: <input id="8" onclick="selectOneSauceOnly(this.id)" type="checkbox" name="noSauce">
+            <br>
+            <!--End Sauce Section-->
+            <!--Cheese Section-->
+            <br>
+            <h3>Cheese:</h3>
 
-                Cheese : <input id="9" onclick="cheeseOrNoCheese(this.id)" type="checkbox" name="cheese" checked>
-                No Cheese : <input id="10" onclick="cheeseOrNoCheese(this.id)" type="checkbox" name="noCheese">
-                <br>
-                <!--End Cheese Section-->
-                <!--Vegetable-->
-                <br>
-                <h3>Veggies:</h3>
+            Cheese : <input id="9" onclick="cheeseOrNoCheese(this.id)" type="checkbox" name="cheese" checked>
+            No Cheese : <input id="10" onclick="cheeseOrNoCheese(this.id)" type="checkbox" name="noCheese">
+            <br>
+            <!--End Cheese Section-->
+            <!--Vegetable-->
+            <br>
+            <h3>Veggies:</h3>
 
-                Mushroom : <input id="11" type="checkbox" name="mushroom" checked>
-                Onion : <input id="12" type="checkbox" name="onions">
-                Green Pepper : <input id="13" type="checkbox" name="greenPepper">
-                <br>
-                <!--End Vegetable-->
-                <!--Meat Section-->
-                <br>
-                <h3>-Meat-</h3>
+            Mushroom : <input id="11" type="checkbox" name="mushroom" checked>
+            Onion : <input id="12" type="checkbox" name="onions">
+            Green Pepper : <input id="13" type="checkbox" name="greenPepper">
+            <br>
+            <!--End Vegetable-->
+            <!--Meat Section-->
+            <br>
+            <h3>-Meat-</h3>
 
-                Bacon : <input id="14" type="checkbox" name="bacon">
-                Pepperoni : <input id="15" type="checkbox" name="pepperoni" checked>
-                Sausage : <input id="16" type="checkbox" name="sausage">
-                <!--Meat Section-->
+            Bacon : <input id="14" type="checkbox" name="bacon">
+            Pepperoni : <input id="15" type="checkbox" name="pepperoni" checked>
+            Sausage : <input id="16" type="checkbox" name="sausage">
+            <!--Meat Section-->
 
 
-                <br>
-                <input type="hidden" th:field="*{time}">
-                <input type="hidden" th:field="*{user}">
-                <input type="submit" value="Submit">
-                <!--END-->
-            </form>
-
-        </div>
-        <div class="col-2"></div>
-    </div>
-
+            <br>
+            <input type="hidden" th:field="*{time}">
+            <input type="hidden" th:field="*{user}">
+            <input type="submit" value="Submit">
+            <!--END-->
+        </form>
+        <!--<a href="/sendingordertomail">Click to submit your Order</a>-->
     </div>
     <div class="col-2"></div>
+</div>
+
+</div>
+<div class="col-2"></div>
 </div>
 
 
