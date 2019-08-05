@@ -5,12 +5,22 @@
     <title>Order Form</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Roboto|Cabin+Sketch:400,700&display=swap" rel="stylesheet">
+    <!--https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css-->
+    <!--<script type="text/javascript"> (function() { var css = document.createElement('link'); css.href = ' https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'; css.rel = 'stylesheet'; css.type = 'text/css'; document.getElementsByTagName('head')[0].appendChild(css); })(); </script>-->
+    <link rel="stylesheet" type="text/css" th:href="@{css/orderform_style.css}">
+    <link rel="stylesheet" type="text/css" href="../static/css/orderform_style.css"/>
+    <script src="jquery-3.4.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("button").click(function(){
+                $("#test").hide();
+            });
+        });
+    </script>
 
 
 </head>
 <style>
-   h3{font-size:3rem; font-weight:bold; font-family: "Cabin Sketch"}
-   h1{font-size:3rem; font-weight:bold; font-family: "Cabin Sketch"}
    /*#crust{*/
        /*position:absolute;*/
        /*height:300px;*/
@@ -53,6 +63,12 @@
    /*}*/
 </style>
 <body>
+<h2>This is a heading</h2>
+
+<p>This is a paragraph.</p>
+<p id="test">This is another paragraph.</p>
+
+<button>Click me</button>
 <div th:replace="base :: nav"></div>
     <div class="row">
         <div class="col-2"></div>
@@ -67,80 +83,110 @@
                 <!--These are the contents-->
                 <input type="hidden" th:field="*{id}">
                 <!--Size Section-->
-                <h3>-Size-</h3>
-
-                <div class="form-check form-check-inline">
-                    <label class="form-check-label" for="1">Small</label>
-                    <input id="1" onclick="selectOneSizeOnly(this.id)" type="checkbox" name="size" checked>
-
-                    <label class="form-check-label" for="2">Medium</label>
-                    <input id="2" onclick="selectOneSizeOnly(this.id)" type="checkbox" name="size">
-
-                    <label class="form-check-label" for="3">Large</label>
-                    <input id="3" onclick="selectOneSizeOnly(this.id)" type="checkbox" name="size">
-
-                    <!--<div style="position:relative;">-->
-                        <!--<div id="crust"></div>-->
-                        <!--<div id="sauce"></div>-->
-                    <!--</div>-->
-
-                </div>
-                <!--End Size Section-->
-                <!--Dough Section-->
-                <br>
-                <h3>-Dough-</h3>
                 <div class="row">
-                    <label class="form-check-label" for="4">Normal</label>
-                    <input id="4" onclick="selectOneDoughOnly(this.id)" type="checkbox" name="normalDough" checked>
+                    <div class="col">
+                        <!--border-right: 1px solid black; margin-right: 10rem-->
+                        <h3>-Size-</h3>
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label" for="1">Small</label>
+                            <input id="1" onclick="selectOneSizeOnly(this.id)" type="checkbox" name="size" checked>
 
-                    <label class="form-check-label" for="5">Gluten Free</label>
-                    <input id="5" onclick="selectOneDoughOnly(this.id)" type="checkbox" name="glutenFreeDough">
+                            <label class="form-check-label" for="2">Medium</label>
+                            <input id="2" onclick="selectOneSizeOnly(this.id)" type="checkbox" name="size">
+
+                            <label class="form-check-label" for="3">Large</label>
+                            <input id="3" onclick="selectOneSizeOnly(this.id)" type="checkbox" name="size">
+
+                            <!--<div style="position:relative;">-->
+                            <!--<div id="crust"></div>-->
+                            <!--<div id="sauce"></div>-->
+                            <!--</div>-->
+                        </div>
+            <!--End Size Section-->
+
+                    </div>
+            <!--Dough Section-->
+                    <div class="col">
+                        <h3>-Dough-</h3>
+                        <div class="row">
+                            <label class="form-check-label" for="4">Normal</label>
+                            <input id="4" onclick="selectOneDoughOnly(this.id)" type="checkbox" name="normalDough" checked>
+
+                            <label class="form-check-label" for="5">Gluten Free</label>
+                            <input id="5" onclick="selectOneDoughOnly(this.id)" type="checkbox" name="glutenFreeDough">
+                        </div>
+                    </div>
                 </div>
-                <br>
-                <br>
-                <!--End Dough Section-->
-                <!--Sauce Section-->
-                <h3>Sauce:</h3>
+            <!--End Dough Section-->
+                <br/>
+                <!--Second Row-->
+                <div class="row">
+                    <!--Sauce Section-->
+                    <div class="col">
+                        <h3>-Sauce-</h3>
 
-                Red Sauce: <input id="6" onclick="selectOneSauceOnly(this.id)" type="checkbox" name="redSauce"
-                                  checked>
-                White Sauce: <input id="7" onclick="selectOneSauceOnly(this.id)" type="checkbox" name="whiteSauce">
-                No Sauce: <input id="8" onclick="selectOneSauceOnly(this.id)" type="checkbox" name="noSauce">
-                <br>
-                <!--End Sauce Section-->
-                <!--Cheese Section-->
-                <br>
-               <h3>Cheese:</h3>
+                        <label class="form-check-label" for="6">Red Sauce:</label>
+                        <input id="6" onclick="selectOneSauceOnly(this.id)" type="checkbox" name="redSauce" checked>
+                        <label class="form-check-label" for="7">White Sauce:</label>
+                        <input id="7" onclick="selectOneSauceOnly(this.id)" type="checkbox" name="whiteSauce">
+                        <label class="form-check-label" for="8">No Sauce:</label>
+                        <input id="8" onclick="selectOneSauceOnly(this.id)" type="checkbox" name="noSauce">
+                        <!--End Sauce Section-->
+                    </div>
+                    <!--Cheese Section-->
+                    <div class="col">
+                        <h3>-Cheese-</h3>
 
-                Cheese : <input id="9" onclick="cheeseOrNoCheese(this.id)" type="checkbox" name="cheese" checked>
-                No Cheese : <input id="10" onclick="cheeseOrNoCheese(this.id)" type="checkbox" name="noCheese">
-                <br>
-                <!--End Cheese Section-->
-                <!--Vegetable-->
-                <br>
-                <h3>Veggies:</h3>
+                        <label class="form-check-label" for="9">Cheese:</label>
+                        <input id="9" onclick="cheeseOrNoCheese(this.id)" type="checkbox" name="cheese" checked>
+                        <label class="form-check-label" for="10">No Cheese:</label>
+                        <input id="10" onclick="cheeseOrNoCheese(this.id)" type="checkbox" name="noCheese">
+                        <!--End Cheese Section-->
+                    </div>
+                </div>
 
-                Mushroom : <input id="11" type="checkbox" name="mushroom" checked>
-                Onion : <input id="12" type="checkbox" name="onions">
-                Green Pepper : <input id="13" type="checkbox" name="greenPepper">
-                <br>
-                <!--End Vegetable-->
-                <!--Meat Section-->
-                <br>
-                <h3>-Meat-</h3>
+              <!--3rd row-->
+                <div class="row">
+                    <!--Vegetable-->
+                    <div class="col">
+                        <h3>-Veggies-</h3>
 
-                Bacon : <input id="14" type="checkbox" name="bacon">
-                Pepperoni : <input id="15" type="checkbox" name="pepperoni" checked>
-                Sausage : <input id="16" type="checkbox" name="sausage">
-                <!--Meat Section-->
+                        <label class="form-check-label" for="11">Mushroom</label>
+                        <input id="11" type="checkbox" name="mushroom" checked>
+                        <label class="form-check-label" for="12">Onion</label>
+                        <input id="12" type="checkbox" name="onions">
+                        <label class="form-check-label" for="13">Green Peppers</label>
+                        <input id="13" type="checkbox" name="greenPepper">
+                        <!--End Vegetable-->
+                    </div>
+                    <div class="col">
+                        <!--Meat Section-->
+                        <h3>-Meat-</h3>
 
-
-                <br>
+                        <label class="form-check-label" for="14">Bacon:</label>
+                        <input id="14" type="checkbox" name="bacon">
+                        <label class="form-check-label" for="15">Pepperoni:</label>
+                        <input id="15" type="checkbox" name="pepperoni" checked>
+                        <label class="form-check-label" for="16">Sausage:</label>
+                        <input id="16" type="checkbox" name="sausage">
+                        <!--End of Meat Section-->
+                    </div>
+                </div>
                 <input type="hidden" th:field="*{time}">
                 <input type="hidden" th:field="*{user}">
                 <input type="submit" value="Submit">
                 <!--END-->
             </form>
+            <br/>
+            <div class="row shadow-lg p-3 mb-5 bg-white rounded" style="background-color: #ecb97a; margin: 0 -5rem 0 -5rem; height:20rem;border-radius:10px;">
+                [Toppings imgs]
+                <div>
+                    <img class="cheese-img" src="/img/toppings/cheese.png"/>
+                </div>
+
+
+            </div>
+
 
         </div>
         <div class="col-2"></div>
@@ -180,7 +226,20 @@
         }
         document.getElementById(id).checked = true;
     }
+
+    function loadCheese(){
+        $(".cheese-img").hide();
+        $("#9").click(function(){
+            if($(this).is(":checked")){
+                $(".cheese").show();
+            }else{
+                $(".cheese").hide();
+            }
+        });
+    }
+
 </script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script type="text/javascript" src="../../javascript/PizzaOrder.js"></script>
 <script type="text/javascript" th:href="@{PizzaOrder.js}"></script>
 </html>
