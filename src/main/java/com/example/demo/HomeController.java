@@ -36,14 +36,14 @@ public class HomeController {
     }
 
     @RequestMapping("/sendemail")
-    public String sendEmail(){
+    public String sendEmail() {
 
         String content = "";
         for (PizzaOrder pizzaOrder : orderRepository.findAllByUser(userService.getUser())) {
             content += pizzaOrder.toString();
         }
 
-        simpleEmailController.SendSimpleEmail(content);
+        simpleEmailController.SendSimpleEmail(userService.getUser().getEmail(), content);
         return "mailTemplate";
     }
 

@@ -278,7 +278,7 @@ public class PizzaOrder {
         if (isLargeSize()) {
             result += " Size Large ";
         }
-        result += " " + getPrice() + " ";
+        result += " " + "Cost: $" + getPrice() + "\n";
         return result;
     }
 }
