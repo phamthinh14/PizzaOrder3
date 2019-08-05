@@ -21,6 +21,9 @@ public class HomeController {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    SimpleEmailController simpleEmailController;
+
     @RequestMapping("/")
     public String land() {
         return "landing";
@@ -32,7 +35,17 @@ public class HomeController {
         return "home";
     }
 
+    @RequestMapping("/sendemail")
+    public String sendEmail(){
 
+        String content = "";
+        for (PizzaOrder pizzaOrder : orderRepository.findAllByUser(userService.getUser())) {
+            content += pizzaOrder.toString();
+        }
+
+        simpleEmailController.SendSimpleEmail(content);
+        return "mailTemplate";
+    }
 
     @RequestMapping("/adminview")
     public String adminView(Model model) {
