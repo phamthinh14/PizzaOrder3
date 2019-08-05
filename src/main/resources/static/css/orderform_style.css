@@ -18,3 +18,26 @@ h3{
     background-color:white;
 }
 
+#toppings_div img{
+    height:7rem; width:7rem;
+}
+
+#crust{
+    position:absolute;
+    height:7rem;
+    width:7rem;
+    background-color: orange;
+    border-radius:50%;
+    z-index:5;
+}
+
+#sauce{
+    position:absolute;
+    height:6rem;
+    width:6rem;
+    background-color: red;;
+    border-radius:50%;
+    z-index:6;
+    left:10px;
+    top:10px;
+}
