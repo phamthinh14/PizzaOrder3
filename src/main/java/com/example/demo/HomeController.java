@@ -39,11 +39,18 @@ public class HomeController {
     public String sendEmail() {
 
         String content = "";
+        String title = "ORDER SUMMARY:\n";
+        String arrive = "\nYOUR ORDER WILL ARRIVE AT ";
+        String time = "";
+        String formattedContent;
+        List<PizzaOrder> pizzaOrderList = new ArrayList<>();
         for (PizzaOrder pizzaOrder : orderRepository.findAllByUser(userService.getUser())) {
             content += pizzaOrder.toString();
+            pizzaOrderList.add(pizzaOrder);
         }
-
-        simpleEmailController.SendSimpleEmail(userService.getUser().getEmail(), content);
+        time += pizzaOrderList.get(pizzaOrderList.size() - 1).getTime();
+        formattedContent = title +content + arrive + time;
+        simpleEmailController.SendSimpleEmail(userService.getUser().getEmail(), formattedContent);
         return "mailTemplate";
     }
 
