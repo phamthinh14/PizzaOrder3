@@ -44,19 +44,20 @@ form{
     top:10px;
 }
 
-#toppings_row{
+.toppings_row{
     text-align:center;
     border-radius:10px;
     position:relative;
     width:60%;
     background-color:beige !important;
-    margin-left:20%
+    margin-left:20%;
+    min-height:9.5rem;
 }
-#toppings_div{
+.toppings_div{
     display:inline-block;
 }
 
-#toppings_div img{
+.toppings_div img{
     height:7rem; width:7rem;
 }
 

@@ -34,14 +34,14 @@
                 </a>
             </li>
             <!-- option 2 shows up at all times-->
-            <li class="nav-item">
-                <a class="nav-link" href="/">
-                    <span sec:authentication="name"></span>
-                </a>
-            </li>
+            <!--<li class="nav-item">-->
+                <!--<a class="nav-link" href="/">-->
+                    <!--<span sec:authentication="name"></span>-->
+                <!--</a>-->
+            <!--</li>-->
 
             <li class="nav-item">
-                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link" href="/">My Order</a>
             </li>
 
             <li class="nav-item" sec:authorize="!isAuthenticated()">

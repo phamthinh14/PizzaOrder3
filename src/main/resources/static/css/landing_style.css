@@ -4,7 +4,7 @@
 body{
     min-height:100vh;
     background:#2e2e2e url("/img/background_fin.png") no-repeat center fixed;
-    background-size:cover
+    background-size:cover;
 }
 
 #landing-div{
@@ -34,11 +34,11 @@ body{
     background-color:#28a745!important;
     color:white;
 }
-#login-btn{
+.login-btn{
     color: #dc3545;
     border: 3px #dc3545 solid;
 }
-#login-btn:hover{
-    background-color:#dc3545;
+.login-btn:hover{
+    background-color:#dc3545 !important;
     color:white;
 }

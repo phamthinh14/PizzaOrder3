@@ -2,73 +2,90 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="www.thymeleaf.org/extras/spring-security">
 <head>
 
-    <title>Home</title>
+    <title>Cart</title>
     <th:block th:replace="base :: header"></th:block>
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Cabin+Sketch:400,700&display=swap" rel="stylesheet">
 </head>
+<style>
+    body{background:beige; min-height:100vh}
+</style>
 <body>
 <div th:replace="base :: nav"></div>
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-8" style="margin-top:5rem;">
+        <h1 style="font-family:'Cabin Sketch'; font-size:5rem;">Order Summary</h1>
+        <div th:each="mypizza : ${pizzaorders}">
+            <div class="card" style="width:20rem; padding:1rem;">
+                <div th:if="${mypizza.smallSize == true}">
+                    Size: Small
+                </div>
+                <div th:if="${mypizza.mediumSize == true}">
+                    Size: Medium
+                </div>
+                <div th:if="${mypizza.largeSize == true}">
+                    Size: Large
+                </div>
+                <div th:if="${mypizza.normalDough == true}">
+                    Normal Dough
+                </div>
+                <div th:if="${mypizza.glutenFreeDough == true}">
+                    Gluten Free Dough
+                </div>
+                <div th:if="${mypizza.redSauce == true}">
+                    Red Sauce
+                </div>
+                <div th:if="${mypizza.whiteSauce == true}">
+                    White Sauce
+                </div>
+                <div th:if="${mypizza.noSauce == true}">
+                    No Sauce
+                </div>
+                <div th:if="${mypizza.cheese == true}">
+                    Cheese
+                </div>
+                <div th:if="${mypizza.noCheese == true}">
+                    No Cheese
+                </div>
+                <div th:if="${mypizza.mushroom == true}">
+                    Mushroom
+                </div>
+                <div th:if="${mypizza.greenPepper == true}">
+                    Green Pepper
+                </div>
+                <div th:if="${mypizza.onions == true}">
+                    Onion
+                </div>
+                <div th:if="${mypizza.bacon == true}">
+                    Bacon
+                </div>
+                <div th:if="${mypizza.pepperoni == true}">
+                    Pepperoni
+                </div>
+                <div th:if="${mypizza.sausage == true}">
+                    Sausage
+                </div>
 
-<h2>Order Summary</h2>
-<div th:each="mypizza : ${pizzaorders}">
-    <div th:if="${mypizza.smallSize == true}">
-        <p>Size: Small</p>
-    </div>
-    <div th:if="${mypizza.mediumSize == true}">
-        <p>Size: Medium</p>
-    </div>
-    <div th:if="${mypizza.largeSize == true}">
-        <p>Size: Large</p>
-    </div>
-    <div th:if="${mypizza.normalDough == true}">
-        <p>Normal Dough</p>
-    </div>
-    <div th:if="${mypizza.glutenFreeDough == true}">
-        <p>Gluten Free Dough</p>
-    </div>
-    <div th:if="${mypizza.redSauce == true}">
-        <p>Red Sauce</p>
-    </div>
-    <div th:if="${mypizza.whiteSauce == true}">
-        <p>White Sauce</p>
-    </div>
-    <div th:if="${mypizza.noSauce == true}">
-        <p>No Sauce</p>
-    </div>
-    <div th:if="${mypizza.cheese == true}">
-        <p>Cheese</p>
-    </div>
-    <div th:if="${mypizza.noCheese == true}">
-        <p>No Cheese</p>
-    </div>
-    <div th:if="${mypizza.mushroom == true}">
-        <p>Mushroom</p>
-    </div>
-    <div th:if="${mypizza.greenPepper == true}">
-        <p>Green Pepper</p>
-    </div>
-    <div th:if="${mypizza.onions == true}">
-        <p>Onion</p>
-    </div>
-    <div th:if="${mypizza.bacon == true}">
-        <p>Bacon</p>
-    </div>
-    <div th:if="${mypizza.pepperoni == true}">
-        <p>Pepperoni</p>
-    </div>
-    <div th:if="${mypizza.sausage == true}">
-        <p>Sausage</p>
-    </div>
 
+                <p th:text="'$'+${mypizza.price}"></p>
+                <p th:text="${mypizza.time}"></p>
+                <a th:href="@{/update/{id} (id=${mypizza.id})}">Update</a>
+                <!--<a th:href="@{/favoritepizzas/{id} (id=${mypizza.id})}">Save As Favorite</a>-->
+                <a th:href="@{/detail/{id} (id=${mypizza.id})}">Details</a>
+                <a th:href="@{/delete/{id} (id=${mypizza.id})}">Delete</a>
+            </div>
+            <br/>
 
-    <p th:text="${mypizza.price}"></p>
-    <p th:text="${mypizza.time}"></p>
-    <a th:href="@{/update/{id} (id=${mypizza.id})}">Update</a>
-    <!--<a th:href="@{/favoritepizzas/{id} (id=${mypizza.id})}">Save As Favorite</a>-->
-    <a th:href="@{/detail/{id} (id=${mypizza.id})}">Details</a>
-    <a th:href="@{/delete/{id} (id=${mypizza.id})}">Delete</a>
+        </div>
+        <br/>
+        <button type="button" sec:authorize="hasAuthority('USER')" class="btn btn-success" onclick="window.location.href='/add'">+ Add Pizza</button>
+        <button type="button" sec:authorize="hasAuthority('USER')" class="btn btn-success" onclick="window.location.href='/sendemail'">Submit Order</button>
+        <!--<a href="/sendemail" sec:authorize="hasAuthority('USER')">Click to submit your Order</a>-->
+        <th:block th:replace="base :: jslinks"></th:block>
 
+    </div>
+    <div class="col-2"></div>
 </div>
-<a href="/sendemail" sec:authorize="hasAuthority('USER')">Click to submit your Order</a>
-<th:block th:replace="base :: jslinks"></th:block>
+
 </body>
 </html>

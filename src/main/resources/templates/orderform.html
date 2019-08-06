@@ -65,9 +65,9 @@
     <div class="col-2"></div>
     <div class="col-8">
         <h1>Build Your Own Pizza!</h1>
-        <div class="row shadow-lg p-3 mb-5 bg-white rounded" id="toppings_row">
+        <div class="toppings_row row shadow-lg p-3 mb-5 bg-white rounded" >
         <!--<div class="row shadow-lg>-->
-            <div id="toppings_div">
+            <div class="toppings_div">
                 <div style="position:relative;">
                     <!--<div id="crust"></div>-->
                     <!--<div id="sauce"></div>-->
@@ -86,7 +86,7 @@
 
                 <!--FOR WHEN RUNNING THROUGH SPRINGBOOT-->
                 <img class="cheese-img" src="img/toppings/cheese.png"/>
-                <img class="pepperoni-img" src="img/toppings/pepperoni.jpg"/>
+                <img class="pepperoni-img" style="height:9rem; width:11rem;"  src="img/toppings/pepperoni.png"/>
                 <img class="bacon-img" src="img/toppings/bacon.png"/>
                 <img class="sausage-img" src="img/toppings/sausage.png"/>
                 <img class="mushroom-img" src="img/toppings/mushroom.png"/>
@@ -114,15 +114,15 @@
                     <div class="form-check form-check-inline">
                         <div class="group">
                             <label class="form-check-label" for="1">Small</label>
-                            <input id="1" onclick="selectOneSizeOnly(this.id)" type="checkbox" name="size" checked>
+                            <input id="1" onclick="selectOneSizeOnly(this.id)" type="checkbox" name="smallSize" checked>
                         </div>
                         <div class="group">
                             <label class="form-check-label" for="2">Medium</label>
-                            <input id="2" onclick="selectOneSizeOnly(this.id)" type="checkbox" name="size">
+                            <input id="2" onclick="selectOneSizeOnly(this.id)" type="checkbox" name="mediumSize">
                         </div>
                         <div class="group">
                             <label class="form-check-label" for="3">Large</label>
-                            <input id="3" onclick="selectOneSizeOnly(this.id)" type="checkbox" name="size">
+                            <input id="3" onclick="selectOneSizeOnly(this.id)" type="checkbox" name="largeSize">
                         </div>
 
                         <!--<div style="position:relative;">-->

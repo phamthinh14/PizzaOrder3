@@ -237,46 +237,46 @@ public class PizzaOrder {
     public String toString() {
         String result = "";
         if (isGlutenFreeDough()) {
-            result += " Gluten-Free Dough ";
+            result += " Gluten-Free Dough \n";
         }
         if (isNormalDough()) {
-            result += " Normal Dough ";
+            result += " Normal Dough \n";
         }
         if (isRedSauce()) {
-            result += " Red Sauce ";
+            result += " Red Sauce \n";
         }
         if (isWhiteSauce()) {
-            result += " White Sauce ";
+            result += " White Sauce \n";
         }
         if (isCheese()) {
-            result += " Cheese Included ";
+            result += " Cheese Included \n";
         }
         if (isMushroom()) {
-            result += " Mushroom ";
+            result += " Mushroom \n";
         }
         if (isOnions()) {
-            result += " Onions ";
+            result += " Onions \n";
         }
         if (isGreenPepper()) {
-            result += " Green Pepper ";
+            result += " Green Pepper \n";
         }
         if (isBacon()) {
-            result += " Bacon ";
+            result += " Bacon \n";
         }
         if (isPepperoni()) {
-            result += " Pepperoni ";
+            result += " Pepperoni \n";
         }
         if (isSausage()) {
-            result += " Sausage ";
+            result += " Sausage \n";
         }
         if (isSmallSize()) {
-            result += " Size Small ";
+            result += " Size: Small \n";
         }
         if (isMediumSize()) {
-            result += " Size Medium ";
+            result += " Size: Medium \n";
         }
         if (isLargeSize()) {
-            result += " Size Large ";
+            result += " Size: Large \n";
         }
         result += " " + "Cost: $" + getPrice() + "\n";
         return result;

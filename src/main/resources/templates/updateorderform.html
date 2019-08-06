@@ -2,154 +2,359 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <th:block th:replace="base :: header"></th:block>
-    <title>Edit Order Form</title>
+    <title>Order Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Cabin+Sketch:400,700&display=swap" rel="stylesheet">
+    <!--https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css-->
+    <!--<script type="text/javascript"> (function() { var css = document.createElement('link'); css.href = ' https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'; css.rel = 'stylesheet'; css.type = 'text/css'; document.getElementsByTagName('head')[0].appendChild(css); })(); </script>-->
+    <link rel="stylesheet" type="text/css" th:href="@{css/orderform_style.css}">
+    <link rel="stylesheet" type="text/css" href="../static/css/orderform_style.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
 </head>
+<style>
+
+    /*#crust{*/
+    /*position:absolute;*/
+    /*height:300px;*/
+    /*width:300px;*/
+    /*background-color: orange;*/
+    /*border-radius:50%;*/
+    /*z-index:5;*/
+    /*}*/
+
+    /*#sauce{*/
+    /*position:absolute;*/
+    /*height:280px;*/
+    /*width:280px;*/
+    /*background-color: red;;*/
+    /*border-radius:50%;*/
+    /*z-index:6;*/
+    /*left:10px;*/
+    /*top:10px;*/
+    /*}*/
+
+    /*!*Changing Sauce with radio button  *!*/
+    /*#7:checked ~ div #sauce{*/
+    /*background-color:#fcf0d6;*/
+    /*}*/
+
+    /*#8:checked ~ div #sauce{*/
+    /*background:transparent;*/
+    /*}*/
+
+
+    /*!* Changing Size with button *!*/
+    /*#2:checked ~ div #sauce{*/
+    /*height:350px;*/
+    /*width:350px;*/
+    /*}*/
+
+    /*#2:checked ~ div #crust{*/
+    /*height:370px;*/
+    /*width:370px;*/
+    /*}*/
+h1,h3{
+    font-family:"Cabin Sketch";
+}
+
+</style>
 <body>
 <div th:replace="base :: nav"></div>
-<form action="#"
-      th:action="@{/process}"
-      th:object="${pizzaorder}"
-      method="post"
-      onsubmit="return checkSelectAtLeastOne(this);">
 
-    <script type="text/javascript" language="JavaScript">
-        <!--
-        function checkSelectAtLeastOne(theForm) {
-            if (
-                theForm.smallSize.checked == false &&
-                theForm.mediumSize.checked == false &&
-                theForm.largeSize.checked == false &&
-                theForm.normalDough.checked == false &&
-                theForm.glutenFreeDough.checked == false &&
-                theForm.redSauce.checked == false &&
-                theForm.whiteSauce.checked == false &&
-                theForm.noSauce.checked == false &&
-                theForm.cheese.checked == false &&
-                theForm.noCheese.checked == false &&
-                theForm.mushroom.checked == false &&
-                theForm.onions.checked == false &&
-                theForm.greenPepper.checked == false &&
-                theForm.bacon.checked == false &&
-                theForm.pepperoni.checked == false &&
-                theForm.sausage.checked == false
-            ) {
-                alert('You did not select anything! Make Sure you pick one in each category');
-                return false;
-            } else {
-                return true;
-            }
-
-        }
-
-        //-->
-    </script>
-    <script>
-        function selectOneSizeOnly(id) {
-            for (var i = 1; i <= 3; i++) {
-                document.getElementById(i).checked = false;
-            }
-            document.getElementById(id).checked = true;
-        }
-
-        function selectOneDoughOnly(id) {
-            for (var i = 4; i <= 5; i++) {
-                document.getElementById(i).checked = false;
-            }
-            document.getElementById(id).checked = true;
-        }
-
-        function selectOneSauceOnly(id) {
-            for (var i = 6; i <= 8; i++) {
-                document.getElementById(i).checked = false;
-            }
-            document.getElementById(id).checked = true;
-        }
-
-        function cheeseOrNoCheese(id) {
-            for (var i = 9; i <= 10; i++) {
-                document.getElementById(i).checked = false;
-            }
-            document.getElementById(id).checked = true;
-        }
-    </script>
-
-    <!--These are the contents-->
-    <input type="hidden" th:field="*{id}">
-    <!--Size Section-->
-    Choose A Size:
-    <hr>
-    <br>
-    Small Size <input id="1" onclick="selectOneSizeOnly(this.id)"
-                      type="checkbox" name="smallSize"
-                      th:checked="${pizzaorder.smallSize == true}">
-    Medium Size <input id="2" onclick="selectOneSizeOnly(this.id)" type="checkbox" name="mediumSize"
-                       th:checked="${pizzaorder.mediumSize == true}">
-    Large Size <input id="3" onclick="selectOneSizeOnly(this.id)" type="checkbox" name="largeSize"
-                      th:checked="${pizzaorder.largeSize == true}">
-    <!--End Size Section-->
-    <!--Dough Section-->
-    <br>
-    Dough:
-    <hr>
-    <br>
-    Normal Dough: <input id="4" onclick="selectOneDoughOnly(this.id)" type="checkbox" name="normalDough"
-                         th:checked="${pizzaorder.normalDough == true}">
-    Gluten Free Dough: <input id="5" onclick="selectOneDoughOnly(this.id)" type="checkbox" name="glutenFreeDough"
-                              th:checked="${pizzaorder.glutenFreeDough == true}">
-    <br>
-    <br>
-    <!--End Dough Section-->
-    <!--Sauce Section-->
-    Sauce:
-    <hr>
-    <br>
-    Red Sauce: <input id="6" onclick="selectOneSauceOnly(this.id)" type="checkbox" name="redSauce"
-                      th:checked="${pizzaorder.redSauce == true}">
-    White Sauce: <input id="7" onclick="selectOneSauceOnly(this.id)" type="checkbox" name="whiteSauce"
-                        th:checked="${pizzaorder.whiteSauce == true}">
-    No Sauce: <input id="8" onclick="selectOneSauceOnly(this.id)" type="checkbox" name="noSauce"
-                     th:checked="${pizzaorder.noSauce == true}">
-    <br>
-    <!--End Sauce Section-->
-    <!--Cheese Section-->
-    <br>
-    Cheese:
-    <hr>
-    <br>
-    Cheese : <input id="9" onclick="cheeseOrNoCheese(this.id)" type="checkbox" name="cheese"
-                    th:checked="${pizzaorder.cheese == true}">
-    No Cheese : <input id="10" onclick="cheeseOrNoCheese(this.id)" type="checkbox" name="noCheese"
-                       th:checked="${pizzaorder.noCheese == true}">
-    <br>
-    <!--End Cheese Section-->
-    <!--Vegetable-->
-    <br>
-    Vegetable:
-    <hr>
-    <br>
-    Mushroom : <input id="11" type="checkbox" name="mushroom" th:checked="${pizzaorder.mushroom == true}">
-    Onion : <input id="12" type="checkbox" name="onions" th:checked="${pizzaorder.onions == true}">
-    Green Pepper : <input id="13" type="checkbox" name="greenPepper" th:checked="${pizzaorder.greenPepper == true}">
-    <br>
-    <!--End Vegetable-->
-    <!--Meat Section-->
-    <br>
-    Meat:
-    <hr>
-    <br>
-    Bacon : <input id="14" type="checkbox" name="bacon" th:checked="${pizzaorder.bacon == true}">
-    Pepperoni : <input id="15" type="checkbox" name="pepperoni" th:checked="${pizzaorder.pepperoni == true}">
-    Sausage : <input id="16" type="checkbox" name="sausage" th:checked="${pizzaorder.sausage == true}">
-    <!--Meat Section-->
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+        <h1><del>Build</del> Edit Your <del>Own</del> Pizza!</h1>
+        <!--<div class="toppings_row row shadow-lg p-3 mb-5 bg-white rounded">-->
+            <!--&lt;!&ndash;<div class="row shadow-lg>&ndash;&gt;-->
+            <!--<div class="toppings_div">-->
+                <!--<div style="position:relative;">-->
+                    <!--&lt;!&ndash;<div id="crust"></div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div id="sauce"></div>&ndash;&gt;-->
+                <!--</div>-->
 
 
-    <br>
-    <input type="hidden" th:field="*{time}">
-    <input type="hidden" th:field="*{user}">
-    <input type="submit" value="Submit">
-    <!--END-->
-</form>
-<th:block th:replace="base :: jslinks"></th:block>
+                <!--&lt;!&ndash;FOR LOCAL&ndash;&gt;-->
+                <!--&lt;!&ndash;<img class="cheese-img" src="../static/img/toppings/cheese.png"/>&ndash;&gt;-->
+                <!--&lt;!&ndash;<img style="height:9rem; width:11rem;" class="pepperoni-img" src="../static/img/toppings/pepperoni.png"/>&ndash;&gt;-->
+                <!--&lt;!&ndash;<img class="bacon-img" src="../static/img/toppings/bacon.png"/>&ndash;&gt;-->
+                <!--&lt;!&ndash;<img class="sausage-img" src="../static/img/toppings/sausage.png"/>&ndash;&gt;-->
+                <!--&lt;!&ndash;<img class="mushroom-img" src="../static/img/toppings/mushroom.png"/>&ndash;&gt;-->
+                <!--&lt;!&ndash;<img class="green-pepper-img" src="../static/img/toppings/green-pepper.png"/>&ndash;&gt;-->
+                <!--&lt;!&ndash;<img class="onion-img" src="../static/img/toppings/onion.png"/>&ndash;&gt;-->
+
+
+                <!--&lt;!&ndash;FOR WHEN RUNNING THROUGH SPRINGBOOT&ndash;&gt;-->
+                <!--<img class="cheese-img" src="img/toppings/cheese.png"/>-->
+                <!--<img class="pepperoni-img" style="height:9rem; width:11rem;"  src="img/toppings/pepperoni.png"/>-->
+                <!--<img class="bacon-img" src="img/toppings/bacon.png"/>-->
+                <!--<img class="sausage-img" src="img/toppings/sausage.png"/>-->
+                <!--<img class="mushroom-img" src="img/toppings/mushroom.png"/>-->
+                <!--<img class="green-pepper-img" src="img/toppings/green-pepper.png"/>-->
+                <!--<img class="onion-img" src="img/toppings/onion.png"/>-->
+
+
+
+            <!--</div>-->
+
+        <!--</div>-->
+        <form action="#"
+              th:action="@{/process}"
+              th:object="${pizzaorder}"
+              method="post"
+              onsubmit="return checkSelectAtLeastOne(this);">
+
+            <!--These are the contents-->
+            <input type="hidden" th:field="*{id}">
+            <!--Size Section-->
+            <div class="row">
+                <div class="col">
+                    <!--border-right: 1px solid black; margin-right: 10rem-->
+                    <h3>-Size-</h3>
+                    <div class="form-check form-check-inline">
+                        <div class="group">
+                            <label class="form-check-label" for="1">Small</label>
+                            <input id="1" onclick="selectOneSizeOnly(this.id)" type="checkbox" th:checked="${pizzaorder.smallSize == true}" name="smallSize" />
+                        </div>
+                        <div class="group">
+                            <label class="form-check-label" for="2">Medium</label>
+                            <input id="2" onclick="selectOneSizeOnly(this.id)" type="checkbox" th:checked="${pizzaorder.mediumSize == true}" name="mediumSize">
+                        </div>
+                        <div class="group">
+                            <label class="form-check-label" for="3">Large</label>
+                            <input id="3" onclick="selectOneSizeOnly(this.id)" type="checkbox" th:checked="${pizzaorder.largeSize == true}" name="largeSize">
+                        </div>
+
+                        <!--<div style="position:relative;">-->
+                        <!--<div id="crust"></div>-->
+                        <!--<div id="sauce"></div>-->
+                        <!--</div>-->
+                    </div>
+                    <!--End Size Section-->
+
+                </div>
+                <!--Dough Section-->
+                <div class="col">
+                    <h3>-Dough-</h3>
+                    <div class="row">
+                        <div class="group">
+                            <label class="form-check-label" for="4">Normal</label>
+                            <input id="4" onclick="selectOneDoughOnly(this.id)" type="checkbox" th:checked="${pizzaorder.normalDough == true}" name="normalDough" />
+                        </div>
+                        <div class="group">
+                            <label class="form-check-label" for="5">Gluten Free</label>
+                            <input id="5" onclick="selectOneDoughOnly(this.id)" type="checkbox" th:checked="${pizzaorder.glutenFreeDough == true}" name="glutenFreeDough">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End Dough Section-->
+            <br/>
+            <!--Second Row-->
+            <div class="row">
+                <!--Sauce Section-->
+                <div class="col">
+                    <h3>-Sauce-</h3>
+                    <div class="group">
+                        <label class="form-check-label" for="6">Red Sauce:</label>
+                        <input id="6" onclick="selectOneSauceOnly(this.id)" type="checkbox" th:checked="${pizzaorder.redSauce == true}" name="redSauce" />
+                    </div>
+                    <div class="group">
+                        <label class="form-check-label" for="7">White Sauce:</label>
+                        <input id="7" onclick="selectOneSauceOnly(this.id)" type="checkbox" th:checked="${pizzaorder.whiteSauce == true}" name="whiteSauce">
+                    </div>
+                    <div class="group">
+                        <label class="form-check-label" for="8">No Sauce:</label>
+                        <input id="8" onclick="selectOneSauceOnly(this.id)" type="checkbox" th:checked="${pizzaorder.noSauce == true}" name="noSauce">
+                    </div>
+                    <!--End Sauce Section-->
+                </div>
+                <!--Cheese Section-->
+                <div class="col">
+                    <h3>-Cheese-</h3>
+
+                    <div class="group">
+                        <label class="form-check-label" for="9">Cheese:</label>
+                        <input id="9" type="checkbox" th:checked="${pizzaorder.cheese == true}" name="cheese" checked/>
+                        <!--<input id="9" onclick="cheeseOrNoCheese(this.id)" type="checkbox" name="cheese" checked/>-->
+                    </div>
+                    <!--<div class="group">-->
+                    <!--<label class="form-check-label" for="10">No Cheese:</label>-->
+                    <!--<input id="10" onclick="cheeseOrNoCheese(this.id)" type="checkbox" name="noCheese"/>-->
+                    <!--</div>-->
+                    <br/>
+
+                    <!--End Cheese Section-->
+                </div>
+            </div>
+
+            <!--3rd row-->
+            <div class="row">
+                <!--Vegetable-->
+                <div class="col">
+                    <h3>-Veggies-</h3>
+                    <div class="group">
+                        <label class="form-check-label" for="11">Mushroom</label>
+                        <input id="11" type="checkbox" th:checked="${pizzaorder.mushroom == true}" name="mushroom">
+                    </div>
+                    <div class="group">
+                        <label class="form-check-label" for="12">Onion</label>
+                        <input id="12" type="checkbox" th:checked="${pizzaorder.onions == true}" name="onions">
+                    </div>
+                    <div class="group">
+                        <label class="form-check-label" for="13">Green Peppers</label>
+                        <input id="13" type="checkbox" th:checked="${pizzaorder.greenPepper == true}" name="greenPepper">
+                    </div>
+                    <!--End Vegetable-->
+                </div>
+                <div class="col">
+                    <!--Meat Section-->
+                    <h3>-Meat-</h3>
+
+                    <div class="group">
+                        <label class="form-check-label" for="14">Bacon:</label>
+                        <input id="14" type="checkbox" th:checked="${pizzaorder.bacon == true}" name="bacon">
+                    </div>
+                    <div class="group">
+                        <label class="form-check-label" for="15">Pepperoni:</label>
+                        <input id="15" type="checkbox" th:checked="${pizzaorder.pepperoni == true}" name="pepperoni">
+                    </div>
+                    <div class="group">
+                        <label class="form-check-label" for="16">Sausage:</label>
+                        <input id="16" type="checkbox" th:checked="${pizzaorder.sausage == true}" name="sausage">
+                    </div>
+                    <!--End of Meat Section-->
+                </div>
+            </div>
+            <input type="hidden" th:field="*{time}">
+            <input type="hidden" th:field="*{user}">
+            <!--<input type="submit" value="Submit">-->
+            <br/>
+            <button type="submit" class="btn btn-lg btn-success">Submit</button>
+            <!--END-->
+        </form>
+        <br/>
+
+
+
+
+    </div>
+    <div class="col-2"></div>
+</div>
+
 </body>
+
+<script>
+
+    function selectOneSizeOnly(id) {
+        for (var i = 1; i <= 3; i++) {
+            document.getElementById(i).checked = false;
+        }
+        document.getElementById(id).checked = true;
+    }
+
+    function selectOneDoughOnly(id) {
+        for (var i = 4; i <= 5; i++) {
+            document.getElementById(i).checked = false;
+        }
+        document.getElementById(id).checked = true;
+    }
+
+    function selectOneSauceOnly(id) {
+        for (var i = 6; i <= 8; i++) {
+            document.getElementById(i).checked = false;
+        }
+        document.getElementById(id).checked = true;
+    }
+
+    function cheeseOrNoCheese(id) {
+        for (var i = 9; i <= 10; i++) {
+            document.getElementById(i).checked = false;
+        }
+        document.getElementById(id).checked = true;
+
+        //Still a bug here
+        if($(this).is(":checked")){
+            $(".cheese-img").show();
+        }else{
+            $(".cheese-img").hide();
+        }
+    }
+
+
+
+
+</script>
+<script>
+    // $(".cheese-img").hide();
+    $("#9").click(function(){
+        if($(this).is(":checked")){
+            $(".cheese-img").show();
+        }else{
+            $(".cheese-img").hide();
+        }
+    });
+
+    $(".mushroom-img").hide();
+    $("#11").click(function(){
+        if($(this).is(":checked")){
+            $(".mushroom-img").show();
+        }else{
+            $(".mushroom-img").hide();
+        }
+    });
+
+    $(".onion-img").hide();
+    $("#12").click(function(){
+        if($(this).is(":checked")){
+            $(".onion-img").show();
+        }else{
+            $(".onion-img").hide();
+        }
+    });
+
+    $(".green-pepper-img").hide();
+    $("#13").click(function(){
+        if($(this).is(":checked")){
+            $(".green-pepper-img").show();
+        }else{
+            $(".green-pepper-img").hide();
+        }
+    });
+
+    $(".bacon-img").hide();
+    $("#14").click(function(){
+        if($(this).is(":checked")){
+            $(".bacon-img").show();
+        }else{
+            $(".bacon-img").hide();
+        }
+    });
+
+    $(".pepperoni-img").hide();
+    $("#15").click(function(){
+        if($(this).is(":checked")){
+            $(".pepperoni-img").show();
+        }else{
+            $(".pepperoni-img").hide();
+        }
+    });
+
+    $(".sausage-img").hide();
+    $("#16").click(function(){
+        if($(this).is(":checked")){
+            $(".sausage-img").show();
+        }else{
+            $(".sausage-img").hide();
+        }
+    });
+
+
+
+</script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
 </html>
