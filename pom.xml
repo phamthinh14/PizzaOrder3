@@ -42,6 +42,7 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
+        <!-- H2 db -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -52,6 +53,12 @@
             <!--<groupId>mysql</groupId>-->
             <!--<artifactId>mysql-connector-java</artifactId>-->
             <!--<scope>runtime</scope>-->
+        <!--</dependency>-->
+        <!-- Postgres db -->
+        <!--<dependency>-->
+            <!--<groupId>org.postgresql</groupId>-->
+            <!--<artifactId>postgresql</artifactId>-->
+            <!--<version>9.4-1201-jdbc4</version>-->
         <!--</dependency>-->
         <!--For the mail-->
         <dependency>
