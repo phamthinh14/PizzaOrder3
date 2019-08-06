@@ -1,18 +1,35 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Display Customers</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Cabin+Sketch:400,700&display=swap" rel="stylesheet">
 </head>
+<style>
+    h3 {
+        font-size: 3rem;
+        font-weight: bold;
+        font-family: "Cabin Sketch"
+    }
+
+    h1 {
+        font-size: 5rem;
+        font-weight: bold;
+        font-family: "Cabin Sketch"
+    }
+</style>
 <body>
 
-<h4>User List</h4>
+<h1>User List</h1>
 <th:block th:each="customer : ${customersInfo}">
-    <span>Customer User Name: <p th:text="${customer.username}"></p></span>
-    <span>First Name <p th:text="${customer.firstName}"></p></span>
-    <span>Lat Name: <p th:text="${customer.lastName}"></p></span>
-    <span>Email: <p th:text="${customer.email}"></p></span>
-    <span>Phone Number: <p th:text="${customer.phonenum}"></p></span>
+    <span><h3>Customer User Name: </h3><p th:text="${customer.username}"></p></span>
+    <span><h3>First Name </h3><p th:text="${customer.firstName}"></p></span>
+    <span><h3>Lat Name: </h3><p th:text="${customer.lastName}"></p></span>
+    <span><h3>Email: </h3><p th:text="${customer.email}"></p></span>
+    <span><h3>Phone Number: </h3><p th:text="${customer.phonenum}"></p></span>
 </th:block>
 
 </body>

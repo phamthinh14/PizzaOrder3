@@ -3,22 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>User Found By Name</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Cabin+Sketch:400,700&display=swap" rel="stylesheet">
 </head>
+<style>
+    h3 {
+        font-size: 3rem;
+        font-weight: bold;
+        font-family: "Cabin Sketch"
+    }
+
+    h1 {
+        font-size: 5rem;
+        font-weight: bold;
+        font-family: "Cabin Sketch"
+    }
+</style>
+
 <body>
 
 <!--<th:block th:each="userInfo : ${users}">-->
 <!--<p th:text="${userInfo.s}"></p>-->
 <!--</th:block>-->
 <th:block th:if="${users} == null">
-    <p>User is not found</p>
+    <p><h1>User is not found</h1></p>
 </th:block>
 
 <th:block th:if="${users} != null">
-    <p th:text="${users.username}"></p>
-    <p th:text="${users.phonenum}"></p>
-    <p th:text="${users.firstName}"></p>
-    <p th:text="${users.lastName}"></p>
-    <p th:text="${users.email}"></p>
+    <h1><p th:text="${users.username}"></p></h1>
+    <h3><p th:text="${users.phonenum}"></p></h3>
+    <h3><p th:text="${users.firstName}"></p></h3>
+    <h3><p th:text="${users.lastName}"></p></h3>
+    <h3><p th:text="${users.email}"></p></h3>
 </th:block>
 
 </body>

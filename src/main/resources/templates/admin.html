@@ -2,12 +2,29 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Admin</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Cabin+Sketch:400,700&display=swap" rel="stylesheet">
 </head>
+<style>
+    h3 {
+        font-size: 3rem;
+        font-weight: bold;
+        font-family: "Cabin Sketch"
+    }
+
+    h1 {
+        font-size: 5rem;
+        font-weight: bold;
+        font-family: "Cabin Sketch"
+    }
+</style>
+
 <body>
-<h2>Admin Page</h2>
+<h1>Admin Page</h1>
 <div sec:authorize="hasAuthority('ADMIN')">
-    Administrators will see this text. You can display a navbar here.
+    <h3>Administrators will see this text. You can display a navbar here.</h3>
 </div>
 </body>
 </html>

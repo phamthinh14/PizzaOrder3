@@ -35,12 +35,13 @@
     <span th:if="${#fields.hasErrors('email')}"
     th:errors="*{email}">Email Error</span>
 </strong></mark>
-
-
-
     <input type ="text" id="email" placeholder="Email"
     th:field="*{email}" /><br />
 
+    Phone <mark><strong>
+    <span th:if="${#fields.hasErrors('phonenum')}"
+          th:errors="*{phonenum}">Phone Error</span>
+</strong></mark>
     <input type ="text" id="phonenum" placeholder="Phone Number"
            th:field="*{phonenum}" /><br />
 

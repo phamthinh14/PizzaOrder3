@@ -1,62 +1,80 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns: sec="www.thymeleaf.org/extras/spring-security">
-<head>
 
+<head>
+    <meta charset="UTF-8">
     <title>Edit Orders</title>
     <th:block th:replace="base :: header"></th:block>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Cabin+Sketch:400,700&display=swap" rel="stylesheet">
 </head>
+<style>
+    h3 {
+        font-size: 3rem;
+        font-weight: bold;
+        font-family: "Cabin Sketch"
+    }
+
+    h1 {
+        font-size: 5rem;
+        font-weight: bold;
+        font-family: "Cabin Sketch"
+    }
+</style>
+
 <body>
 <div th:replace="base :: nav"></div>
 
-<h2>Order Summary</h2>
+<h1>Order Summary</h1>
 <div th:each="mypizza : ${pizzaorders}">
     <div th:if="${mypizza.smallSize == true}">
-        <p>Size: Small</p>
+        <p><h3>Size: Small</h3></p>
     </div>
     <div th:if="${mypizza.mediumSize == true}">
-        <p>Size: Medium</p>
+        <p><h3>Size: Medium</h3></p>
     </div>
     <div th:if="${mypizza.largeSize == true}">
-        <p>Size: Large</p>
+        <p><h3>Size: Large</h3></p>
     </div>
     <div th:if="${mypizza.normalDough == true}">
-        <p>Normal Dough</p>
+        <p><h3>Normal Dough</h3></p>
     </div>
     <div th:if="${mypizza.glutenFreeDough == true}">
-        <p>Gluten Free Dough</p>
+        <p><h3>Gluten Free Dough</h3></p>
     </div>
     <div th:if="${mypizza.redSauce == true}">
-        <p>Red Sauce</p>
+        <p><h3>Red Sauce</h3></p>
     </div>
     <div th:if="${mypizza.whiteSauce == true}">
-        <p>White Sauce</p>
+        <p><h3>White Sauce</h3></p>
     </div>
     <div th:if="${mypizza.noSauce == true}">
-        <p>No Sauce</p>
+        <p><h3>No Sauce</h3></p>
     </div>
     <div th:if="${mypizza.cheese == true}">
-        <p>Cheese</p>
+        <p><h3>Cheese</h3></p>
     </div>
     <div th:if="${mypizza.noCheese == true}">
-        <p>No Cheese</p>
+        <p><h3>No Cheese</h3></p>
     </div>
     <div th:if="${mypizza.mushroom == true}">
-        <p>Mushroom</p>
+        <p><h3>Mushroom</h3></p>
     </div>
     <div th:if="${mypizza.greenPepper == true}">
-        <p>Green Pepper</p>
+        <p><h3>Green Pepper</h3></p>
     </div>
     <div th:if="${mypizza.onions == true}">
-        <p>Onion</p>
+        <p><h3>Onion</h3></p>
     </div>
     <div th:if="${mypizza.bacon == true}">
-        <p>Bacon</p>
+        <p><h3>Bacon</h3></p>
     </div>
     <div th:if="${mypizza.pepperoni == true}">
-        <p>Pepperoni</p>
+        <p><h3>Pepperoni</h3></p>
     </div>
     <div th:if="${mypizza.sausage == true}">
-        <p>Sausage</p>
+        <p><h3>Sausage</h3></p>
     </div>
 
 
