@@ -11,44 +11,6 @@
     <link rel="stylesheet" type="text/css" th:href="@{css/orderform_style.css}">
     <link rel="stylesheet" type="text/css" href="../static/css/orderform_style.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <!--<script>-->
-        <!--$(document).ready(function(){-->
-            <!--$("button").click(function(){-->
-                <!--$("#test").hide();-->
-            <!--});-->
-        <!--});-->
-
-
-
-    <!--</script>-->
-    <!--<script>-->
-        <!--$(document).ready(function() {-->
-            <!--$("#9").click(function () {-->
-                <!--if ($(this).is(":checked")) {-->
-                    <!--$(".cheese-img").show();-->
-                <!--} else {-->
-                    <!--$(".cheese-img").hide();-->
-                <!--}-->
-            <!--})-->
-        <!--});-->
-
-    <!--</script>-->
-    <script>
-        $(document).ready(function(){
-            $("button").click(function(){
-                $("p").css({"background-color": "yellow", "font-size": "200%"});
-            });
-        });
-    </script>
-
-
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js">-->
-        <!--$(document).ready(function(){-->
-            <!--$("button").click(function(){-->
-                <!--$("#test").hide();-->
-            <!--});-->
-        <!--});-->
-    <!--</script>-->
 
 
 </head>
@@ -99,166 +61,189 @@
 <body>
 <div th:replace="base :: nav"></div>
 
-    <div class="row">
-        <div class="col-2"></div>
-        <div class="col-8">
-            <h1>Build Your Own Pizza!</h1>
-            <form action="#"
-                  th:action="@{/process}"
-                  th:object="${pizzaorder}"
-                  method="post"
-                  onsubmit="return checkSelectAtLeastOne(this);">
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+        <h1>Build Your Own Pizza!</h1>
+        <div class="row shadow-lg p-3 mb-5 bg-white rounded" id="toppings_row">
+        <!--<div class="row shadow-lg>-->
+            <div id="toppings_div">
+                <div style="position:relative;">
+                    <!--<div id="crust"></div>-->
+                    <!--<div id="sauce"></div>-->
+                </div>
 
-                <!--These are the contents-->
-                <input type="hidden" th:field="*{id}">
-                <!--Size Section-->
-                <div class="row">
-                    <div class="col">
-                        <!--border-right: 1px solid black; margin-right: 10rem-->
-                        <h3>-Size-</h3>
-                        <div class="form-check form-check-inline">
+
+                <!--FOR LOCAL-->
+                <!--<img class="cheese-img" src="../static/img/toppings/cheese.png"/>-->
+                <!--<img style="height:9rem; width:11rem;" class="pepperoni-img" src="../static/img/toppings/pepperoni.png"/>-->
+                <!--<img class="bacon-img" src="../static/img/toppings/bacon.png"/>-->
+                <!--<img class="sausage-img" src="../static/img/toppings/sausage.png"/>-->
+                <!--<img class="mushroom-img" src="../static/img/toppings/mushroom.png"/>-->
+                <!--<img class="green-pepper-img" src="../static/img/toppings/green-pepper.png"/>-->
+                <!--<img class="onion-img" src="../static/img/toppings/onion.png"/>-->
+
+
+                <!--FOR WHEN RUNNING THROUGH SPRINGBOOT-->
+                <img class="cheese-img" src="img/toppings/cheese.png"/>
+                <img class="pepperoni-img" src="img/toppings/pepperoni.jpg"/>
+                <img class="bacon-img" src="img/toppings/bacon.png"/>
+                <img class="sausage-img" src="img/toppings/sausage.png"/>
+                <img class="mushroom-img" src="img/toppings/mushroom.png"/>
+                <img class="green-pepper-img" src="img/toppings/green-pepper.png"/>
+                <img class="onion-img" src="img/toppings/onion.png"/>
+
+
+
+            </div>
+
+        </div>
+        <form action="#"
+              th:action="@{/process}"
+              th:object="${pizzaorder}"
+              method="post"
+              onsubmit="return checkSelectAtLeastOne(this);">
+
+            <!--These are the contents-->
+            <input type="hidden" th:field="*{id}">
+            <!--Size Section-->
+            <div class="row">
+                <div class="col">
+                    <!--border-right: 1px solid black; margin-right: 10rem-->
+                    <h3>-Size-</h3>
+                    <div class="form-check form-check-inline">
+                        <div class="group">
                             <label class="form-check-label" for="1">Small</label>
                             <input id="1" onclick="selectOneSizeOnly(this.id)" type="checkbox" name="size" checked>
-
+                        </div>
+                        <div class="group">
                             <label class="form-check-label" for="2">Medium</label>
                             <input id="2" onclick="selectOneSizeOnly(this.id)" type="checkbox" name="size">
-
+                        </div>
+                        <div class="group">
                             <label class="form-check-label" for="3">Large</label>
                             <input id="3" onclick="selectOneSizeOnly(this.id)" type="checkbox" name="size">
-
-                            <!--<div style="position:relative;">-->
-                            <!--<div id="crust"></div>-->
-                            <!--<div id="sauce"></div>-->
-                            <!--</div>-->
                         </div>
-            <!--End Size Section-->
 
+                        <!--<div style="position:relative;">-->
+                        <!--<div id="crust"></div>-->
+                        <!--<div id="sauce"></div>-->
+                        <!--</div>-->
                     </div>
-            <!--Dough Section-->
-                    <div class="col">
-                        <h3>-Dough-</h3>
-                        <div class="row">
+                    <!--End Size Section-->
+
+                </div>
+                <!--Dough Section-->
+                <div class="col">
+                    <h3>-Dough-</h3>
+                    <div class="row">
+                        <div class="group">
                             <label class="form-check-label" for="4">Normal</label>
                             <input id="4" onclick="selectOneDoughOnly(this.id)" type="checkbox" name="normalDough" checked>
-
+                        </div>
+                        <div class="group">
                             <label class="form-check-label" for="5">Gluten Free</label>
                             <input id="5" onclick="selectOneDoughOnly(this.id)" type="checkbox" name="glutenFreeDough">
                         </div>
                     </div>
                 </div>
+            </div>
             <!--End Dough Section-->
-                <br/>
-                <!--Second Row-->
-                <div class="row">
-                    <!--Sauce Section-->
-                    <div class="col">
-                        <h3>-Sauce-</h3>
-
+            <br/>
+            <!--Second Row-->
+            <div class="row">
+                <!--Sauce Section-->
+                <div class="col">
+                    <h3>-Sauce-</h3>
+                    <div class="group">
                         <label class="form-check-label" for="6">Red Sauce:</label>
                         <input id="6" onclick="selectOneSauceOnly(this.id)" type="checkbox" name="redSauce" checked>
+                    </div>
+                    <div class="group">
                         <label class="form-check-label" for="7">White Sauce:</label>
                         <input id="7" onclick="selectOneSauceOnly(this.id)" type="checkbox" name="whiteSauce">
+                    </div>
+                    <div class="group">
                         <label class="form-check-label" for="8">No Sauce:</label>
                         <input id="8" onclick="selectOneSauceOnly(this.id)" type="checkbox" name="noSauce">
-                        <!--End Sauce Section-->
                     </div>
-                    <!--Cheese Section-->
-                    <div class="col">
-                        <h3>-Cheese-</h3>
+                    <!--End Sauce Section-->
+                </div>
+                <!--Cheese Section-->
+                <div class="col">
+                    <h3>-Cheese-</h3>
 
-
+                    <div class="group">
                         <label class="form-check-label" for="9">Cheese:</label>
-                        <input id="9" onclick="cheeseOrNoCheese(this.id)" type="checkbox" name="cheese" checked/>
-                        <label class="form-check-label" for="10">No Cheese:</label>
-                        <input id="10" onclick="cheeseOrNoCheese(this.id)" type="checkbox" name="noCheese"/>
-                        <br/>
-
-                        <!--End Cheese Section-->
+                        <input id="9" type="checkbox" name="cheese" checked/>
+                        <!--<input id="9" onclick="cheeseOrNoCheese(this.id)" type="checkbox" name="cheese" checked/>-->
                     </div>
+                    <!--<div class="group">-->
+                        <!--<label class="form-check-label" for="10">No Cheese:</label>-->
+                        <!--<input id="10" onclick="cheeseOrNoCheese(this.id)" type="checkbox" name="noCheese"/>-->
+                    <!--</div>-->
+                    <br/>
+
+                    <!--End Cheese Section-->
                 </div>
-
-              <!--3rd row-->
-                <div class="row">
-                    <!--Vegetable-->
-                    <div class="col">
-                        <h3>-Veggies-</h3>
-
-                        <label class="form-check-label" for="11">Mushroom</label>
-                        <input id="11" type="checkbox" name="mushroom" checked>
-                        <label class="form-check-label" for="12">Onion</label>
-                        <input id="12" type="checkbox" name="onions">
-                        <label class="form-check-label" for="13">Green Peppers</label>
-                        <input id="13" type="checkbox" name="greenPepper">
-                        <!--End Vegetable-->
-                    </div>
-                    <div class="col">
-                        <!--Meat Section-->
-                        <h3>-Meat-</h3>
-
-                        <label class="form-check-label" for="14">Bacon:</label>
-                        <input id="14" type="checkbox" name="bacon">
-                        <label class="form-check-label" for="15">Pepperoni:</label>
-                        <input id="15" type="checkbox" name="pepperoni" checked>
-                        <label class="form-check-label" for="16">Sausage:</label>
-                        <input id="16" type="checkbox" name="sausage">
-                        <!--End of Meat Section-->
-                    </div>
-                </div>
-                <input type="hidden" th:field="*{time}">
-                <input type="hidden" th:field="*{user}">
-                <input type="submit" value="Submit">
-                <!--END-->
-            </form>
-            <br/>
-            <div class="row shadow-lg p-3 mb-5 bg-white rounded" style="background-color: #ecb97a; margin: 0 -5rem 0 -5rem; height:20rem;border-radius:10px;">
-                <div id="toppings_div">
-                    <div style="position:relative;">
-                        <!--<div id="crust"></div>-->
-                        <!--<div id="sauce"></div>-->
-                    </div>
-                    <img class="cheese-img" src="../static/img/toppings/cheese.png"/>
-                    <img class="cheese-img" src="img/toppings/cheese.png"/>
-
-                    <img class="mushroom-img" src="https://en.wikipedia.org/wiki/File:Tango_Style_Mushroom_icon.svg#/media/File:Tango_Style_Mushroom_icon.svg"/>
-                </div>
-
             </div>
 
+            <!--3rd row-->
+            <div class="row">
+                <!--Vegetable-->
+                <div class="col">
+                    <h3>-Veggies-</h3>
+                    <div class="group">
+                        <label class="form-check-label" for="11">Mushroom</label>
+                        <input id="11" type="checkbox" name="mushroom">
+                    </div>
+                    <div class="group">
+                        <label class="form-check-label" for="12">Onion</label>
+                        <input id="12" type="checkbox" name="onions">
+                    </div>
+                    <div class="group">
+                        <label class="form-check-label" for="13">Green Peppers</label>
+                        <input id="13" type="checkbox" name="greenPepper">
+                    </div>
+                    <!--End Vegetable-->
+                </div>
+                <div class="col">
+                    <!--Meat Section-->
+                    <h3>-Meat-</h3>
+
+                    <div class="group">
+                        <label class="form-check-label" for="14">Bacon:</label>
+                        <input id="14" type="checkbox" name="bacon">
+                    </div>
+                    <div class="group">
+                        <label class="form-check-label" for="15">Pepperoni:</label>
+                        <input id="15" type="checkbox" name="pepperoni">
+                    </div>
+                    <div class="group">
+                        <label class="form-check-label" for="16">Sausage:</label>
+                        <input id="16" type="checkbox" name="sausage">
+                    </div>
+                    <!--End of Meat Section-->
+                </div>
+            </div>
+            <input type="hidden" th:field="*{time}">
+            <input type="hidden" th:field="*{user}">
+            <!--<input type="submit" value="Submit">-->
+            <br/>
+            <button type="submit" class="btn btn-lg btn-success">Submit</button>
+            <!--END-->
+        </form>
+        <br/>
 
 
-        </div>
-        <div class="col-2"></div>
+
+
     </div>
+    <div class="col-2"></div>
+</div>
 
 </body>
 
-<!--<label class="form-check-label" for="70">Cheese:</label>-->
-<!--<input id="70" type="checkbox" checked/>-->
-<!--<br/>-->
-<!--<img class="cheese-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAwFBMVEX833b////ur0v0xE783nLtrEj85Zr833X94nj0xU783Wz83nD83Wv0wkvurkftq0ftqTftqz73z2j51Gz3zl7tqjz1yGLxulX51mnvs0/99Nz88+b++vT40Wrzwlzvs0v2y1nyxIH845b84o/97Lrwumf770b216zyvU398M/+9+b97cH73nv978n856b84IT54sX10J3zypDxvnP10qL4377558/86K/yw3/vtVv32rT88OH52pLxvG786Kv++u+GEAvBAAANK0lEQVR4nN2deVfbOhOHJeJgx4lDQgJZCCFshVAIy23L2/a95ft/q2s5CfEyI2sZL+nvnPYPDsR+GGk0iyQYp9THy+vl7eTg5+3l6/cz0k82FyP8rF+3vX63eyDU7fZ7B28/CD/cWHSEd93+mu5T3ZP+a/WWJCKcfev2DwD1Ty6rZiQhnH3rg3yRIXtvM4pnGIuAcPaK80V27H63f4i5rAk/3k6kfEK9/1G8qqEsCc8ue908PjFUu9XNRivC32p8ArH/m+qNdWVB+PsfVT6hky90L60lY8IvWnyhehUhGhL+uNXkE4gvtK+uKCPCFwM+gVjJqmFA+PLzxIRPIP6iB8iVNuH3iSmfQLwrgkEuTcJfkxNjvAjxWzEYEmkR3sHhtY5O3ooiwaRBSMBXBaIq4exbj4IvVL/kIFWNMC990FLJVlQh/Hijst+asNziRj7h2aXF8gASloAVUx6hevqgqu5tKWCfkhPqpQ+KhJflkG0lI9ROH/aM0CR9UCKsyWphmD6oEP4sFRAhNE8fFNSrnvB7kXyl1zOyhL8OCuULh2m1Mc3dAWX4giBWSEiTPuSpX2qqHyOUdR9oVaoRd4SU6UOO+mXOxC3hl0lpfKF6JaYXG8LvRa3viPrlddzWhC+9UvnCmTgpDTEi/F02YJmIEeGk3CG6RuyXFNoIwtcyncxOvdeyCGfVAIbuZhJb+r/cFjRsQ8K7qghDxv7bi+gOz17+PelOPooi/FnBLPxUt9/rT8J/3cJa4Yx/lO9IERXTCmf8pbpBmtFJAYisymmYVQHhHONvVU7DjOgR60ZI3wpn/P9HVUMlRd0KZ/ywXjYkb4WHhKOqkdKibYWHhMfNqpHSIo1YQ0JnUjVRRieXtISD2hnxoE+HKAi98xoi/kNJyLzBpHaM/X8pCRnzjkfNZr0o+0S94g1hyMjO5we1guz+JMmJPwkFpDc4HdUIkqZaFSeMINnxqDam7B4QpP0pwojSHcwnR7WApEj7AcLteD2oASRB2g8TbsZrHVyPdccYJdyaclI1pG1OLCVcm7Jq/2q5Az6PkDG38qXSLu3PJ1ybklU5Xq1yYkVCVu1SaZMTqxOuTXk+r8SUFjmxHiGrLLQz31isTcgqGq/Gab8JYUTJyg7tTHfAmxJGpnRKHa+GObEFYbhUlhvameXEVoQbU5a2VBrlxPaEbDNeVVKRi1BlI5IQbkM7uSkv7ltCjXsLSINWOBFhJOl4vWi0Gmu1WoE5o35OLCMcD4djx9OEZHDV7qIRV+veHFE3J8YJh0GkxVgLkSGhXSMtczNqbjXCCL1hsHmVYOHqMq5Du3g8cN9KE7bMEfVOhWOE4yD2NiYzNRnaZUxoh6iTEyOEXvJ3buiMotBOQF5kTGiJqJETYzYMki9jRsi2qQhI2GgZE+q0whFCJ0kYLIwRo/G6gABtPKpG2q9G2AisFk1vCBLajFP1tF+RsLHQWxdTGqY/bitzQuWcGPM06VcJbACTnpnIiKqImKdJj6tAe+FXIWxYzETVnBgjzExEK0KGAFoNU8VWOBq1pdxfMLQB9GBnajlM1dJ+PC4NCAklE9EudVY4No0TJl/KcpQycMkPNTy26+Ll58SS7CmJaAeIGnHoWXZFclvhEkIv9la2JszM60/C6Ek2Vea8Vrg0x3cWAcksjAQCfv7mLKrMOWm/vIrhjYetKAu2imjWyoRJmbFhWmWWp/0K/UP9BBgWOBVT32M4XmU5MWUlKk+DDCI0vdFSj0yS+1LKJGROI8WI5Z2hKTW7eHjaXyph6FHjiIFsCdIdr2jaXzKhN14EuxJX3jdrdUWwnLhkwvC1neFCmK8xVFpiP0s9CohwTlw6IYtso/NM5S4e3AqvglBbql08MCfeC8JIUVckJx6AWuH7Q8g2G7SkqQiQ9u8VoVBOKpJN+/eOkOV08TKt8H0kZNLQLp0T7ymhELZUphD3mJBhoV2yFb7fhAxOnRP3New9oVB2vMZSjeIIvVDFfDL8tGRot0Nk/Krj+36bFtNzB8fz+fz0eOCWR5kM7T7Tfsany+lyeXPdaVNVK0I+8aDwSeK/+aBES8ZLPdtLfnb3RH199GkYvdPElGhOjstk3CyVu3J4/Dazp3ab4gmjtPduTkq1o3iHQfgSJ3cZQs4PO/YfngEMdTQneG291zgOM41ZlpA/dSxHajhEgUgqNGPZa5LHJutL09K3Ck5tHQ7EF6nskcrYpDcDCPmDHeIQJWxSFM711H+FCPnUZi56sh0kpQdPgyZIyJ988890Atk2IPnooI+BvPsf8A2tV+a/7HEgM+IIR/DYaRgDUc/V9htyy675VBxKW/PNU4zAOz1qCk3OSRm9U4Twq/E4FX3QADdiExkdIeD2O0amjwY1nCE3JTNTIwpCk3G6W0SbE2McQP4XhPCrafgW9bJl43QA/ljiehVKxPYTQjgzXTHWW6kkiKARvXkiVJ/TzcX2O3Zj+bWhO932eVFE0IjeXMXQJsIJTYfplhC1YhPa85AOZiWriqacQ4zwwdSbbpuDmLu5B9u+qWuOmhZMSeGEM0PC3QY2GPGiBe/FTRGe21DFhRNy0x0Yuw0XLYDxogXvPUpPRDQy0JWE0HRFdOP7ENKnf6JTF9BEdJNGrJJQRMfyCDmx9TZ+jEsc7BJfW4Cfm/A1zVMCuEgSQgciFHtAJqGrk0XIbuocQzgu74Uarc32xBb4s4nixxHZcoETfoBL/nzTgm0eSepnwK71Viu2+RImTCBO7Aep60aeBCd8gtbD+HVZkvpZBjCFi/xcrAhpmyo7fvvx+fmx7bdxQiCmSRfRmpgZ0W3ray2w9/JYVEg+GlkCOp3VNKqyzaZ//CuE8AEYpJnLB48Qj+ctpIiSjZyeNzgfMM+uFuZfx9uHD6KqDxA+Zx/iZe8eRENkbMuzkP1e3BzA9xQL49dXGcBVdhamViy5FV0ZYbGA7T9pGMYPfXeZ/NohFLKBNw9iWYCLW3FRJB9zHzPmEv1D13982n1l+QjmFfAdoJhfR61ofETMc52xw/KWkU52zq07pK7fvrqZnj1Ml3+wDhRMiDpUBrubYGi41I3Fbuyg0RpK3ZALOM5tD9h12n6n4/tomQ27xxV9GnRezfQc427rbRAsJKOgnXYzXKPLjVxy2jzGXytjRmPA5OEWfL3xlxaELmJDWZV3vFB9NbmUf1GdBwtCD7lQWZqPe86wEUSbgsP/hqZOJhMkBdj+8A5wfkZ9LwYyEXPLRs54OBSXM+gwJQUsPQgiTLhSfTZiQ3wiEgk6ihLAp3Y7wAEhxt8Vy2pYd5csW8UERvJw8Ad7mhvVwiEQmR5QVhwwwbkKGP21byDCqXJZDVwwih+lSDYGOWbnGiLkyhV8cJxi7SQ6IYQBFJt0QEL1jW3QThKCikOOXIQQMqL/BBFqNO6TLZRypiFeFgG+1X2GCHXaMJmBWrwJs3cDSIdpJrkQhFDNApN3njwNQIYhEXg2E1kwskaM0o0brS7F6SfjEW1LGhNymh9ZEr9ChPxKp5nmsfNRuRsrkRURDORdfwYR8mu9XlNU1y9vCzBsRCRVcZ5BQr6y3bJXrNRHaRjYHIKEfMmINtAWImicoiWfzjtIKDYJE+6EphaAiF9elaiZJko3DzfPHR/sOlWvbBosKS37hwhhqNny0MXLUVUqdRAcyRA3arMpRig0fQ/Ha/3Ombjxqk9eUcvtrDJ79RP6+HrVrt149ZzFxo5BI7/u6nRWDxJCoeXKqd94HQ8XrcVwrPRaTudxtZQR1tX1aAQaLto/jGn2dNiunylVJdmpkFBNXY+CVAm5cD3Xxbsej/y8mwahGK+h6yky6vEG89FodKozz3KlRygUuh7fL2a8euu9LM0m5QkifUIeuZ5OAa5nVx9pEh6vMSIUmr4/k7ue+GYdMkRjQh65Hp/S9ST2CZDtErYhFFquGJXrSRXxqEp4toSczvWkCKnKsASEPHI9kv6/qlLtSaIjCTSEQvZRzyD5h5eJZiIdIY9cj02U7hXSLSAlFLJwPel+Ac2xEnJCvk642kamnOwJIY9cj0nuPGjuwSjdafqH6boe7zjmbOroaTI60416vGPSrd7FE/J1wqUxXj//8nKTqmtXOKGQluvxzkcHR0cTsgSqFEIuXM+Vsilpu1plEQoZuJ49Iwz1ELmev5mQR20Rgii9zoRCRRQI6kUY6uPpqhxTVkYoNP1TQke2UsJQZ1GBoEjKqgl55HqK7HDVgFCowLZITQh51JEtosxcI0Kh5Yre9dSLkBfQka0dIY9cD1mZuZ6EQnSup66EfNMWsTels6otoRBBWwS/vaUusnU97Zu6E3Lj2uRa/nQPCIWMXU9HuieqXjLaDBK60v0hFJqu2nquR5xN2CtCvnU9qiYUx6D2jZDrdGSjQ7N7SCikVOvxo7N6e0rIFVzPZs/+/hLyqC2CRz3+5r6PvSYUQjaDuJ3V5hv2npBDrsf12eeJ4L+BUCiqTa5npdPusNjxrr+FkIsy8+o5BHw8vEncrPAfEz1hWUieWiMAAAAASUVORK5CYII="/>-->
-<!--<br/>-->
-<!--<script>-->
-    <!--$("#69").click(function(){-->
-        <!--if($(this).is(":checked")){-->
-            <!--$(".cheese-img").show();-->
-        <!--}else{-->
-            <!--$(".cheese-img").hide();-->
-        <!--}-->
-    <!--});-->
-<!--</script>-->
-
-<!--</body>-->
-<!--<script>-->
-    <!--$(document).ready(function() {-->
-        <!--$("#9").click(function () {-->
-            <!--if ($(this).is(":checked")) {-->
-                <!--$(".cheese-img").show();-->
-            <!--} else {-->
-                <!--$(".cheese-img").hide();-->
-            <!--}-->
-        <!--})-->
-    <!--});-->
-<!--</script>-->
 <script>
 
     function selectOneSizeOnly(id) {
@@ -287,6 +272,8 @@
             document.getElementById(i).checked = false;
         }
         document.getElementById(id).checked = true;
+
+        //Still a bug here
         if($(this).is(":checked")){
             $(".cheese-img").show();
         }else{
@@ -299,13 +286,71 @@
 
 </script>
 <script>
-    // $("#9").click(function(){
-    //     if($(this).is(":checked")){
-    //         $(".cheese-img").show();
-    //     }else{
-    //         $(".cheese-img").hide();
-    //     }
-    // });
+    // $(".cheese-img").hide();
+    $("#9").click(function(){
+        if($(this).is(":checked")){
+            $(".cheese-img").show();
+        }else{
+            $(".cheese-img").hide();
+        }
+    });
+
+    $(".mushroom-img").hide();
+    $("#11").click(function(){
+        if($(this).is(":checked")){
+            $(".mushroom-img").show();
+        }else{
+            $(".mushroom-img").hide();
+        }
+    });
+
+    $(".onion-img").hide();
+    $("#12").click(function(){
+        if($(this).is(":checked")){
+            $(".onion-img").show();
+        }else{
+            $(".onion-img").hide();
+        }
+    });
+
+    $(".green-pepper-img").hide();
+    $("#13").click(function(){
+        if($(this).is(":checked")){
+            $(".green-pepper-img").show();
+        }else{
+            $(".green-pepper-img").hide();
+        }
+    });
+
+    $(".bacon-img").hide();
+    $("#14").click(function(){
+        if($(this).is(":checked")){
+            $(".bacon-img").show();
+        }else{
+            $(".bacon-img").hide();
+        }
+    });
+
+    $(".pepperoni-img").hide();
+    $("#15").click(function(){
+        if($(this).is(":checked")){
+            $(".pepperoni-img").show();
+        }else{
+            $(".pepperoni-img").hide();
+        }
+    });
+
+    $(".sausage-img").hide();
+    $("#16").click(function(){
+        if($(this).is(":checked")){
+            $(".sausage-img").show();
+        }else{
+            $(".sausage-img").hide();
+        }
+    });
+
+
+
 </script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script type="text/javascript" src="../../javascript/PizzaOrder.js"></script>

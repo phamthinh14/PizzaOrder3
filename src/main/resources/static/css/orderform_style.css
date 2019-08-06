@@ -10,16 +10,18 @@ h3{
     font-size:3rem;
     font-weight:bold;
     font-family: "Cabin Sketch";
-    padding: 3rem 0 0 10rem;
+    /*padding: 3rem 0 0 10rem;*/
 
 }
 
 .col-8{
     background-color:white;
+    margin-top:2.5%;
+
 }
 
-#toppings_div img{
-    height:7rem; width:7rem;
+form{
+    margin:3rem 10rem;
 }
 
 #crust{
@@ -42,6 +44,22 @@ h3{
     top:10px;
 }
 
-.form-check-inline{
-    padding-left:35%; !important
+#toppings_row{
+    text-align:center;
+    border-radius:10px;
+    position:relative;
+    width:60%;
+    background-color:beige !important;
+    margin-left:20%
 }
+#toppings_div{
+    display:inline-block;
+}
+
+#toppings_div img{
+    height:7rem; width:7rem;
+}
+
+/*.form-check-inline{*/
+    /*padding-left:35%; !important*/
+/*}*/
