@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <th:block th:replace="base :: header"></th:block>
     <title>Title</title>
 </head>
 <body>
@@ -12,55 +13,61 @@
       th:action="@{/register}"
       th:object="${user}" method="post">
 
-    First Name <mark><strong>
+    First Name
+    <mark><strong>
     <span th:if="${#fields.hasErrors('firstName')}"
           th:errors="*{firstName}">First Name Error</span>
-</strong>
+    </strong>
 
-</mark>
+    </mark>
     <input type="text" id="firstName" placeholder="First Name"
-           th:field="*{firstName}" /><br />
+           th:field="*{firstName}"/><br/>
 
-    Last Name<mark><strong>
+    Last Name
+    <mark><strong>
     <span th:if="${#fields.hasErrors('lastName')}"
           th:errors="*{lastName}">Last Name Error</span>
-</strong>
+    </strong>
 
-</mark>
+    </mark>
 
     <input type="text" id="lastName" placeholder="Last Name"
-           th:field="*{lastName}" /><br />
+           th:field="*{lastName}"/><br/>
 
-    Email <mark><strong>
+    Email
+    <mark><strong>
     <span th:if="${#fields.hasErrors('email')}"
-    th:errors="*{email}">Email Error</span>
-</strong></mark>
+          th:errors="*{email}">Email Error</span>
+    </strong></mark>
 
 
+    <input type="text" id="email" placeholder="Email"
+           th:field="*{email}"/><br/>
 
-    <input type ="text" id="email" placeholder="Email"
-    th:field="*{email}" /><br />
-
-    Phone Number <mark><strong>
-    <input type ="text" id="phonenum" placeholder="Phone Number"
-           th:field="*{phonenum}" /><br />
-
-    Username <mark><strong>
+    Phone Number
+    <mark><strong>
+        <input type="text" id="phonenum" placeholder="Phone Number"
+               th:field="*{phonenum}"/><br/>
+    </strong></mark>
+        Username
+        <mark><strong>
     <span th:if="${#fields.hasErrors('username')}"
           th:errors="*{username}">Username Error</span>
-</strong></mark>
+        </strong></mark>
 
-    <input type="text" id="username"
-    placeholder="Username" th:field="*{username}" /><br />
+        <input type="text" id="username"
+               placeholder="Username" th:field="*{username}"/><br/>
 
-    Password<mark><strong>
+        Password
+        <mark><strong>
     <span th:if="${#fields.hasErrors('password')}"
           th:errors="*{password}">Password Error</span>
-</strong></mark>
-    <input type="text" id="password" placeholder="Password"
-    th:field="*{password}" /><br />
+        </strong></mark>
+        <input type="text" id="password" placeholder="Password"
+               th:field="*{password}"/><br/>
 
-    <button type="submit" class="btn btn-defaul">Submit</button>
+        <button type="submit" class="btn btn-defaul">Submit</button>
 </form>
+<th:block th:replace="base :: jslinks"></th:block>
 </body>
 </html>

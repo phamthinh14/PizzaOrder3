@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <th:block th:replace="base :: header"></th:block>
     <title>Title</title>
 </head>
 <body>
@@ -22,6 +23,6 @@
 
 </form>
 <a th:href="@{/register}">register</a>
-
+   <th:block th:replace="base :: jslinks"></th:block>
 </body>
 </html>
