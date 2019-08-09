@@ -1,4 +1,5 @@
 # PizzaOrder3 - Online Pizza Ordering
+*NOTES: Fixed Heroku issued<br>
   This is an online pizza ordering system like Papa John's Pizza Delivery. <br>
   This application is built with Java, Javascript, HTML, CSS, and Bootstrap. <br>
   There are Spring Boot for the html templates, and Spring Security for user to login to view their orders and collect information of new users. <br>
@@ -14,7 +15,7 @@ Veggies<br>
 Toppings/Finishing touches<br>
 User can Update, View the detail of each orders and all orders, and delete their order<br>
 Links:<br>
-https://young-waters-46714.herokuapp.com/
+https://sleepy-falls-50987.herokuapp.com/
 
 # HomeController Methods
  @RequestMapping("/")<br>
