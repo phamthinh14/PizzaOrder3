@@ -14,8 +14,6 @@ Cheese<br>
 Veggies<br>
 Toppings/Finishing touches<br>
 User can Update, View the detail of each orders and all orders, and delete their order<br>
-Links:<br>
-https://arcane-bastion-50689.herokuapp.com/
 <br>*NOTES: Fixed Heroku issued<br>
 This is the website to properly deploy a java application to heroku. Follow the steps and ensure that at least one instance of the app is running by the line of command below:<br>
 heroku ps:scale web=1
